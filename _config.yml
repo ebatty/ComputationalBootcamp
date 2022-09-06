@@ -5,9 +5,9 @@
 
 #######################################################################################
 # Book settings
-title                       : Quantitative Methods for Biologists - Python  # The title of the book. Will be placed in the left navbar.
+title                       : Computational Bootcamp  # The title of the book. Will be placed in the left navbar.
 author                      : Ella Batty  # The author of the book
-copyright                   : "2021"  # Copyright year to be placed in the footer
+copyright                   : "2022"  # Copyright year to be placed in the footer
 #logo                        : images/NeuroImage.png  # A path to the book logo
 only_build_toc_files        : true
 
