@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="In-class activities" href="Day1_InClass.html" />
-    <link rel="prev" title="Indexing" href="Indexing.html" />
+    <link rel="prev" title="Creating &amp; Reshaping Arrays" href="CreatingReshaping.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -137,6 +137,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="Indexing.html">
    Indexing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CreatingReshaping.html">
+   Creating &amp; Reshaping Arrays
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -607,7 +612,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6ca228e950&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f21897ee7d0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/Plotting_7_1.png" src="../_images/Plotting_7_1.png" />
@@ -696,7 +701,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6ca1fdc310&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f218953a350&gt;]
 </pre></div>
 </div>
 <img alt="../_images/Plotting_14_1.png" src="../_images/Plotting_14_1.png" />
@@ -719,7 +724,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6ca20aaa50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f21894c18d0&gt;
 </pre></div>
 </div>
 <img alt="../_images/Plotting_16_1.png" src="../_images/Plotting_16_1.png" />
@@ -738,7 +743,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6ca1ecdfd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f2189519850&gt;
 </pre></div>
 </div>
 <img alt="../_images/Plotting_17_1.png" src="../_images/Plotting_17_1.png" />
@@ -755,7 +760,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6ca1e42690&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f21893a3650&gt;]
 </pre></div>
 </div>
 <img alt="../_images/Plotting_19_1.png" src="../_images/Plotting_19_1.png" />
@@ -812,7 +817,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f6ca0890410&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f218bcd2d10&gt;
 </pre></div>
 </div>
 <img alt="../_images/Plotting_26_1.png" src="../_images/Plotting_26_1.png" />
@@ -832,7 +837,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f6ca227ec10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f21896f9090&gt;
 </pre></div>
 </div>
 <img alt="../_images/Plotting_28_1.png" src="../_images/Plotting_28_1.png" />
@@ -897,7 +902,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PolyCollection at 0x7f6ca0588590&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PolyCollection at 0x7f2187af3e10&gt;
 </pre></div>
 </div>
 <img alt="../_images/Plotting_35_1.png" src="../_images/Plotting_35_1.png" />
@@ -990,11 +995,11 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Indexing.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="CreatingReshaping.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Indexing</p>
+            <p class="prev-next-title">Creating &amp; Reshaping Arrays</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="Day1_InClass.html" title="next page">
