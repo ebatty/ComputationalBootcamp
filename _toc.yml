@@ -4,9 +4,9 @@ parts:
   - caption: Week 1
     chapters:
     - file: content/Variables.ipynb
-    - file: content/Operators.ipynb
-    - file: content/IntrotoArrays.ipynb
-    - file: content/ArrayComputations.ipynb
-    - file: content/Indexing.ipynb
-    - file: content/CreatingReshaping.ipynb
-    - file: content/Day1_InClass.ipynb
+    - file: content/MathOperators.ipynb
+#     - file: content/IntrotoArrays.ipynb
+#     - file: content/ArrayComputations.ipynb
+#     - file: content/Indexing.ipynb
+#     - file: content/CreatingReshaping.ipynb
+#     - file: content/Day1_InClass.ipynb
