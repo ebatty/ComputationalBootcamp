@@ -8,6 +8,6 @@ parts:
     - file: content/IntrotoArrays.ipynb
     - file: content/ArrayComputations.ipynb
     - file: content/Indexing.ipynb
-#     - file: content/CreatingReshaping.ipynb
+    - file: content/CreatingReshaping.ipynb
     - file: content/Plotting.ipynb
     - file: content/Day1_InClass.ipynb
