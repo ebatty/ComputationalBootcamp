@@ -9,4 +9,4 @@ parts:
     - file: content/ArrayComputations.ipynb
 #     - file: content/Indexing.ipynb
 #     - file: content/CreatingReshaping.ipynb
-#     - file: content/Day1_InClass.ipynb
+    - file: content/Day1_InClass.ipynb
