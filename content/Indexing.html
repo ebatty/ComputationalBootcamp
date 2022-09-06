@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Array Computations &#8212; Computational Bootcamp</title>
+    <title>Indexing &#8212; Computational Bootcamp</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Indexing" href="Indexing.html" />
-    <link rel="prev" title="Intro to Arrays" href="IntrotoArrays.html" />
+    <link rel="next" title="1.6 - Plotting" href="Plotting.html" />
+    <link rel="prev" title="Array Computations" href="ArrayComputations.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -129,13 +129,13 @@ const thebe_selector_output = ".output, .cell_output"
    Intro to Arrays
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ArrayComputations.html">
    Array Computations
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Indexing.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Indexing
   </a>
  </li>
@@ -208,7 +208,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://colab.research.google.com/github/QMBC-Python/QMBC-Python.github.io/blob/main/content/ArrayComputations.ipynb"
+        <a href="https://colab.research.google.com/github/QMBC-Python/QMBC-Python.github.io/blob/main/content/Indexing.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -269,7 +269,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/content/ArrayComputations.ipynb"
+        <a href="../_sources/content/Indexing.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -306,100 +306,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Array Computations
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setting-up-our-data">
-   Setting up our data
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#investigating-the-data">
-   Investigating the data
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#axis-specific-computations">
-   Axis-specific computations
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#vectorization">
-   Vectorization
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Array Computations</h1>
+                <h1>Indexing</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Array Computations
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setting-up-our-data">
-   Setting up our data
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#investigating-the-data">
-   Investigating the data
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#axis-specific-computations">
-   Axis-specific computations
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#vectorization">
-   Vectorization
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -407,172 +330,138 @@ title="Print to PDF"
                 
               <div>
                 
-  <p><a href="https://colab.research.google.com/github/ebatty/ComputationalBootcamp/blob/master/content/ArrayComputations.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-<section class="tex2jax_ignore mathjax_ignore" id="array-computations">
-<h1>Array Computations<a class="headerlink" href="#array-computations" title="Permalink to this headline">#</a></h1>
-<p>Video</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=h_KYkTFkfNw
-</pre></div>
-</div>
-<div class="output text_html">
-<iframe
-    width="730"
-    height="410"
-    src="https://www.youtube.com/embed/h_KYkTFkfNw?fs=1"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
-</div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="setting-up-our-data">
-<h1>Setting up our data<a class="headerlink" href="#setting-up-our-data" title="Permalink to this headline">#</a></h1>
-<p>Let’s say we have spiking data in an array. Each column is a neuron, each row is a time point. The data represents spike counts.</p>
-<p><img alt="picture" src="https://raw.githubusercontent.com/ebatty/ComputationalBootcamp/master/images/data.png" /></p>
-<p>We can create the above array as follows:</p>
+  <p><a href="https://colab.research.google.com/github/ebatty/ComputationalBootcamp/blob/master/content/Indexing.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="indexing">
+<h1>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">spikes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="investigating-the-data">
-<h1>Investigating the data<a class="headerlink" href="#investigating-the-data" title="Permalink to this headline">#</a></h1>
-<p>We can compute the shape of the array (to get the number of rows and columns)</p>
+<p>Let’s first create this array</p>
+<p><img alt="picture" src="https://raw.githubusercontent.com/ebatty/ComputationalBootcamp/master/images/array.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">spikes</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can grab specific data points using:</p>
+<p><code class="docutils literal notranslate"><span class="pre">x[row</span> <span class="pre">index,</span> <span class="pre">column</span> <span class="pre">index]</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 3)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
 </pre></div>
 </div>
 </div>
 </div>
-<p>The first number outputted above is the number of rows, the second is the number of columns.</p>
-<p>We can also get the minimum and maximum values in the array</p>
+<p>We can grab multiple column values in one row with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="n">row</span> <span class="n">index</span><span class="p">,</span> <span class="n">start</span> <span class="n">index</span><span class="p">:</span><span class="n">stop</span> <span class="n">index</span><span class="o">*</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>* not inclusive of stop index</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">spikes</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2, 1])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can overwrite subsets of our array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">spikes</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[100,   2,   1,   3],
+       [  1,   0,   3,   5],
+       [  6,   7,   8,   2]])
 </pre></div>
 </div>
 </div>
 </div>
-<p>We can sum over all the values in the array, or get the mean of all values as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">spikes</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[100, 100, 100, 100],
+       [  1,   0,   3,   5],
+       [  6,   7,   8,   2]])
 </pre></div>
 </div>
 </div>
 </div>
+<p>We can use Boolean indexing as well!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">spikes</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">6</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.6666666666666667
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ True,  True,  True,  True],
+       [False, False, False, False],
+       [False,  True,  True, False]])
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="axis-specific-computations">
-<h1>Axis-specific computations<a class="headerlink" href="#axis-specific-computations" title="Permalink to this headline">#</a></h1>
-<p>We might want to get the mean per column or per row, instead of over the whole array. We can do this with the following code:</p>
-<p><code class="docutils literal notranslate"><span class="pre">np.mean(spikes,</span> <span class="pre">axis</span> <span class="pre">=</span> <span class="pre">?)</span></code></p>
-<p>Where the question mark is needs to be replaced with the axis that we want to compute over.</p>
-<p>The rows are axis 0, when we enter axis = 0 as an argument into the np.mean command, we are asking numpy to compute the mean over the rows (which would be the column means)</p>
-<p><img alt="picture" src="https://raw.githubusercontent.com/ebatty/ComputationalBootcamp/master/images/axes.png" /></p>
-<p>We can get the mean over rows with:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">spikes</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.66666667, 2.66666667])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([100, 100, 100, 100,   7,   8])
 </pre></div>
 </div>
 </div>
 </div>
-<p>We can get the mean over columns with:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">spikes</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2., 2., 1.])
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="vectorization">
-<h1>Vectorization<a class="headerlink" href="#vectorization" title="Permalink to this headline">#</a></h1>
-<p>If you do something like a math operation on an array, it will do element-wise operation</p>
-<p><img alt="picture" src="https://raw.githubusercontent.com/ebatty/ComputationalBootcamp/master/images/addition.png" /></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spikes</span> <span class="o">+</span> <span class="mi">1</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2, 1, 2],
-       [4, 5, 2]])
-</pre></div>
-</div>
-</div>
-</div>
-<p>If we do something like added two arrays of the same shape, that will also be element-wise.</p>
-<p><img alt="picture" src="https://raw.githubusercontent.com/ebatty/ComputationalBootcamp/master/images/addition_two_arrays.png" /></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boolean_columns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
 
-<span class="n">spikes</span> <span class="o">+</span> <span class="n">y</span>
+<span class="n">x</span><span class="p">[:,</span> <span class="n">boolean_columns</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3, 3, 1],
-       [7, 5, 2]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[100, 100],
+       [  3,   5],
+       [  8,   2]])
 </pre></div>
 </div>
 </div>
@@ -606,17 +495,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="IntrotoArrays.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="ArrayComputations.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Intro to Arrays</p>
+            <p class="prev-next-title">Array Computations</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Indexing.html" title="next page">
+    <a class='right-next' id="next-link" href="Plotting.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Indexing</p>
+        <p class="prev-next-title">1.6 - Plotting</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
