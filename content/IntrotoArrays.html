@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Variables &#8212; Quantitative Methods for Biologists - Python</title>
+    <title>Intro to Arrays &#8212; Quantitative Methods for Biologists - Python</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Math Operators" href="MathOperators.html" />
-    <link rel="prev" title="Introduction" href="../intro.html" />
+    <link rel="next" title="Array Computations" href="ArrayComputations.html" />
+    <link rel="prev" title="Math Operators" href="MathOperators.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -114,8 +114,8 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Variables.html">
    Variables
   </a>
  </li>
@@ -124,8 +124,8 @@ const thebe_selector_output = ".output, .cell_output"
    Math Operators
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="IntrotoArrays.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Intro to Arrays
   </a>
  </li>
@@ -193,7 +193,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://colab.research.google.com/github/QMBC-Python/QMBC-Python.github.io/blob/main/content/Variables.ipynb"
+        <a href="https://colab.research.google.com/github/QMBC-Python/QMBC-Python.github.io/blob/main/content/IntrotoArrays.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -254,7 +254,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/content/Variables.ipynb"
+        <a href="../_sources/content/IntrotoArrays.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -313,25 +313,22 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-a-variable">
-   What is a variable
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Intro to Arrays
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-do-we-use-variables">
-   Why do we use variables?
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-libraries">
+   What are libraries?
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#other-types-of-data">
-   Other types of data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#naming-variables">
-   Naming variables
-  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arrays">
+     Arrays
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -342,7 +339,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Variables</h1>
+                <h1>Intro to Arrays</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -352,25 +349,22 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-a-variable">
-   What is a variable
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Intro to Arrays
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-do-we-use-variables">
-   Why do we use variables?
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-libraries">
+   What are libraries?
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#other-types-of-data">
-   Other types of data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#naming-variables">
-   Naming variables
-  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arrays">
+     Arrays
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -382,168 +376,43 @@ title="Print to PDF"
                 
               <div>
                 
-  <p><a href="https://colab.research.google.com/github/ebatty/ComputationalBootcamp/blob/master/content/Variables.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-<section class="tex2jax_ignore mathjax_ignore" id="variables">
-<h1>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">#</a></h1>
-<p>Video: Variables</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=DKV78n0cHog
-</pre></div>
-</div>
-<div class="output text_html">
-<iframe
-    width="730"
-    height="410"
-    src="https://www.youtube.com/embed/DKV78n0cHog?fs=1"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
-</div>
-<section id="what-is-a-variable">
-<h2>What is a variable<a class="headerlink" href="#what-is-a-variable" title="Permalink to this headline">#</a></h2>
-<p><img alt="picture" src="https://raw.githubusercontent.com/ebatty/ComputationalBootcamp/master/images/Variables.png" /></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_trials</span> <span class="o">=</span> <span class="mi">100</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">100</span> <span class="o">*</span> <span class="mi">2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_trials</span> <span class="o">*</span> <span class="mi">1</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100
-</pre></div>
-</div>
-</div>
-</div>
-<p>Variables can change. You can assign a different value to the same variable name.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_trials</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">n_trials</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="n">n_trials</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20
-</pre></div>
-</div>
-</div>
-</div>
+  <p><a href="https://colab.research.google.com/github/ebatty/ComputationalBootcamp/blob/master/content/IntrotoArrays.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="intro-to-arrays">
+<h1>Intro to Arrays<a class="headerlink" href="#intro-to-arrays" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="why-do-we-use-variables">
-<h2>Why do we use variables?<a class="headerlink" href="#why-do-we-use-variables" title="Permalink to this headline">#</a></h2>
-<p>We use variables so we can keep track of data throughout code, and change it easily.</p>
+<section class="tex2jax_ignore mathjax_ignore" id="what-are-libraries">
+<h1>What are libraries?<a class="headerlink" href="#what-are-libraries" title="Permalink to this headline">#</a></h1>
+<p>In Python, there is a relatively small amount of core code (what’s present in this notebook by default). To get more advanced functionality, we need to import libraries.</p>
+<p><img alt="alt text" src="content/libraries.png" /></p>
+<section id="arrays">
+<h2>Arrays<a class="headerlink" href="#arrays" title="Permalink to this headline">#</a></h2>
+<p>We want to be able to work with more than one data point so we need arrays.</p>
+<p>To work with arrays, we will use the numpy library, which is a core library for scientific computing</p>
+<p>NumPy = Numerical Python</p>
+<p>We import numpy as follows</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_trials</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># change this to try out different numbers of trials</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="n">n_heads</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_trials</span><span class="p">):</span>
-    <span class="n">is_it_heads</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-    <span class="n">n_heads</span> <span class="o">+=</span> <span class="n">is_it_heads</span>
-<span class="n">proportion_heads</span> <span class="o">=</span> <span class="n">n_heads</span><span class="o">/</span><span class="n">n_trials</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;In </span><span class="si">{</span><span class="n">n_trials</span><span class="si">}</span><span class="s1"> trials, it came up heads </span><span class="si">{</span><span class="n">proportion_heads</span><span class="si">}</span><span class="s1"> of the time&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In 50 trials, it came up heads 0.46 of the time
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="other-types-of-data">
-<h2>Other types of data<a class="headerlink" href="#other-types-of-data" title="Permalink to this headline">#</a></h2>
-<p>Our data can have different types, not just be numbers. For example, we can have a variable with a value that is a string.</p>
+<p>To create a 1-d array, we can do the following line of code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_variable</span> <span class="o">=</span> <span class="s1">&#39;a string&#39;</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">my_variable</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>We can create a 2-d array with the following code</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_variable</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">my_variable</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="naming-variables">
-<h2>Naming variables<a class="headerlink" href="#naming-variables" title="Permalink to this headline">#</a></h2>
-<ol class="simple">
-<li><p>Starts with letter and then consists of letters and numbers (no special characters)</p></li>
-<li><p>Should be lowercase with underscores as necessary - no mixedCase</p></li>
-<li><p>Be concise but descriptive!</p></li>
-<li><p>Avoid reserved words</p></li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="s1">&#39;keywords&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Here is a list of the Python keywords.  Enter any keyword to get more help.
-
-False               class               from                or
-None                continue            global              pass
-True                def                 if                  raise
-and                 del                 import              return
-as                  elif                in                  try
-assert              else                is                  while
-async               except              lambda              with
-await               finally             nonlocal            yield
-break               for                 not                 
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Which of these variable names obey Python style?</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">x</span></code>: not very descriptive</p>
-<p><code class="docutils literal notranslate"><span class="pre">rnasequence</span></code>: should be underscore between rna and sequence</p>
-<p><code class="docutils literal notranslate"><span class="pre">mouse_speed</span></code>: perfect</p>
-<p><code class="docutils literal notranslate"><span class="pre">temperature&amp;speed</span></code>: special character (&amp;)</p>
-<p><code class="docutils literal notranslate"><span class="pre">fr</span></code>: not very descriptive</p>
-<p><code class="docutils literal notranslate"><span class="pre">frame_rate</span></code>: perfect</p>
-<p><code class="docutils literal notranslate"><span class="pre">temperature</span></code>: perfect</p>
-<p><code class="docutils literal notranslate"><span class="pre">def</span></code>: reserved word</p>
 </section>
 </section>
 
@@ -574,17 +443,17 @@ break               for                 not
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="MathOperators.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction</p>
+            <p class="prev-next-title">Math Operators</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="MathOperators.html" title="next page">
+    <a class='right-next' id="next-link" href="ArrayComputations.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Math Operators</p>
+        <p class="prev-next-title">Array Computations</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

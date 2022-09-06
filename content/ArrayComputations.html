@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Variables &#8212; Quantitative Methods for Biologists - Python</title>
+    <title>Array Computations &#8212; Quantitative Methods for Biologists - Python</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Math Operators" href="MathOperators.html" />
-    <link rel="prev" title="Introduction" href="../intro.html" />
+    <link rel="prev" title="Intro to Arrays" href="IntrotoArrays.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -114,8 +113,8 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Variables.html">
    Variables
   </a>
  </li>
@@ -129,8 +128,8 @@ const thebe_selector_output = ".output, .cell_output"
    Intro to Arrays
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ArrayComputations.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Array Computations
   </a>
  </li>
@@ -193,7 +192,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://colab.research.google.com/github/QMBC-Python/QMBC-Python.github.io/blob/main/content/Variables.ipynb"
+        <a href="https://colab.research.google.com/github/QMBC-Python/QMBC-Python.github.io/blob/main/content/ArrayComputations.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -254,7 +253,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/content/Variables.ipynb"
+        <a href="../_sources/content/ArrayComputations.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -313,24 +312,29 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-a-variable">
-   What is a variable
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Array Computations
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-do-we-use-variables">
-   Why do we use variables?
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setting-up-our-data">
+   Setting up our data
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#other-types-of-data">
-   Other types of data
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#investigating-the-data">
+   Investigating the data
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#naming-variables">
-   Naming variables
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#axis-specific-computations">
+   Axis-specific computations
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vectorization">
+   Vectorization
   </a>
  </li>
 </ul>
@@ -342,7 +346,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Variables</h1>
+                <h1>Array Computations</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -352,24 +356,29 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-a-variable">
-   What is a variable
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Array Computations
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-do-we-use-variables">
-   Why do we use variables?
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setting-up-our-data">
+   Setting up our data
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#other-types-of-data">
-   Other types of data
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#investigating-the-data">
+   Investigating the data
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#naming-variables">
-   Naming variables
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#axis-specific-computations">
+   Axis-specific computations
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vectorization">
+   Vectorization
   </a>
  </li>
 </ul>
@@ -382,169 +391,176 @@ title="Print to PDF"
                 
               <div>
                 
-  <p><a href="https://colab.research.google.com/github/ebatty/ComputationalBootcamp/blob/master/content/Variables.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-<section class="tex2jax_ignore mathjax_ignore" id="variables">
-<h1>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">#</a></h1>
-<p>Video: Variables</p>
+  <p><a href="https://colab.research.google.com/github/ebatty/ComputationalBootcamp/blob/master/content/ArrayComputations.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="array-computations">
+<h1>Array Computations<a class="headerlink" href="#array-computations" title="Permalink to this headline">#</a></h1>
+<p>Video</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=DKV78n0cHog
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=h_KYkTFkfNw
 </pre></div>
 </div>
 <div class="output text_html">
 <iframe
     width="730"
     height="410"
-    src="https://www.youtube.com/embed/DKV78n0cHog?fs=1"
+    src="https://www.youtube.com/embed/h_KYkTFkfNw?fs=1"
     frameborder="0"
     allowfullscreen
 
 ></iframe>
 </div></div>
 </div>
-<section id="what-is-a-variable">
-<h2>What is a variable<a class="headerlink" href="#what-is-a-variable" title="Permalink to this headline">#</a></h2>
-<p><img alt="picture" src="https://raw.githubusercontent.com/ebatty/ComputationalBootcamp/master/images/Variables.png" /></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="setting-up-our-data">
+<h1>Setting up our data<a class="headerlink" href="#setting-up-our-data" title="Permalink to this headline">#</a></h1>
+<p>Let’s say we have spiking data in an array. Each column is a neuron, each row is a time point. The data represents spike counts.</p>
+<p><img alt="picture" src="https://raw.githubusercontent.com/ebatty/ComputationalBootcamp/master/images/data.png" /></p>
+<p>We can create the above array as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_trials</span> <span class="o">=</span> <span class="mi">100</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">100</span> <span class="o">*</span> <span class="mi">2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_trials</span> <span class="o">*</span> <span class="mi">1</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100
-</pre></div>
-</div>
-</div>
-</div>
-<p>Variables can change. You can assign a different value to the same variable name.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_trials</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">n_trials</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="n">n_trials</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">spikes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="why-do-we-use-variables">
-<h2>Why do we use variables?<a class="headerlink" href="#why-do-we-use-variables" title="Permalink to this headline">#</a></h2>
-<p>We use variables so we can keep track of data throughout code, and change it easily.</p>
+<section class="tex2jax_ignore mathjax_ignore" id="investigating-the-data">
+<h1>Investigating the data<a class="headerlink" href="#investigating-the-data" title="Permalink to this headline">#</a></h1>
+<p>We can compute the shape of the array (to get the number of rows and columns)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_trials</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># change this to try out different numbers of trials</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="n">n_heads</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_trials</span><span class="p">):</span>
-    <span class="n">is_it_heads</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-    <span class="n">n_heads</span> <span class="o">+=</span> <span class="n">is_it_heads</span>
-<span class="n">proportion_heads</span> <span class="o">=</span> <span class="n">n_heads</span><span class="o">/</span><span class="n">n_trials</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;In </span><span class="si">{</span><span class="n">n_trials</span><span class="si">}</span><span class="s1"> trials, it came up heads </span><span class="si">{</span><span class="n">proportion_heads</span><span class="si">}</span><span class="s1"> of the time&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">spikes</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In 50 trials, it came up heads 0.46 of the time
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The first number outputted above is the number of rows, the second is the number of columns.</p>
+<p>We can also get the minimum and maximum values in the array</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">spikes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">spikes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can sum over all the values in the array, or get the mean of all values as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">spikes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">spikes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.6666666666666667
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="other-types-of-data">
-<h2>Other types of data<a class="headerlink" href="#other-types-of-data" title="Permalink to this headline">#</a></h2>
-<p>Our data can have different types, not just be numbers. For example, we can have a variable with a value that is a string.</p>
+<section class="tex2jax_ignore mathjax_ignore" id="axis-specific-computations">
+<h1>Axis-specific computations<a class="headerlink" href="#axis-specific-computations" title="Permalink to this headline">#</a></h1>
+<p>We might want to get the mean per column or per row, instead of over the whole array. We can do this with the following code:</p>
+<p><code class="docutils literal notranslate"><span class="pre">np.mean(spikes,</span> <span class="pre">axis</span> <span class="pre">=</span> <span class="pre">?)</span></code></p>
+<p>Where the question mark is needs to be replaced with the axis that we want to compute over.</p>
+<p>The rows are axis 0, when we enter axis = 0 as an argument into the np.mean command, we are asking numpy to compute the mean over the rows (which would be the column means)</p>
+<p><img alt="picture" src="https://raw.githubusercontent.com/ebatty/ComputationalBootcamp/master/images/axes.png" /></p>
+<p>We can get the mean over rows with:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_variable</span> <span class="o">=</span> <span class="s1">&#39;a string&#39;</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">my_variable</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">spikes</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.66666667, 2.66666667])
 </pre></div>
 </div>
 </div>
 </div>
+<p>We can get the mean over columns with:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_variable</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">my_variable</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">spikes</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2., 2., 1.])
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="naming-variables">
-<h2>Naming variables<a class="headerlink" href="#naming-variables" title="Permalink to this headline">#</a></h2>
-<ol class="simple">
-<li><p>Starts with letter and then consists of letters and numbers (no special characters)</p></li>
-<li><p>Should be lowercase with underscores as necessary - no mixedCase</p></li>
-<li><p>Be concise but descriptive!</p></li>
-<li><p>Avoid reserved words</p></li>
-</ol>
+<section class="tex2jax_ignore mathjax_ignore" id="vectorization">
+<h1>Vectorization<a class="headerlink" href="#vectorization" title="Permalink to this headline">#</a></h1>
+<p>If you do something like a math operation on an array, it will do element-wise operation</p>
+<p><img alt="picture" src="https://raw.githubusercontent.com/ebatty/ComputationalBootcamp/master/images/addition.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="s1">&#39;keywords&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spikes</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Here is a list of the Python keywords.  Enter any keyword to get more help.
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2, 1, 2],
+       [4, 5, 2]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we do something like added two arrays of the same shape, that will also be element-wise.</p>
+<p><img alt="picture" src="https://raw.githubusercontent.com/ebatty/ComputationalBootcamp/master/images/addition_two_arrays.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
 
-False               class               from                or
-None                continue            global              pass
-True                def                 if                  raise
-and                 del                 import              return
-as                  elif                in                  try
-assert              else                is                  while
-async               except              lambda              with
-await               finally             nonlocal            yield
-break               for                 not                 
+<span class="n">spikes</span> <span class="o">+</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3, 3, 1],
+       [7, 5, 2]])
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Which of these variable names obey Python style?</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">x</span></code>: not very descriptive</p>
-<p><code class="docutils literal notranslate"><span class="pre">rnasequence</span></code>: should be underscore between rna and sequence</p>
-<p><code class="docutils literal notranslate"><span class="pre">mouse_speed</span></code>: perfect</p>
-<p><code class="docutils literal notranslate"><span class="pre">temperature&amp;speed</span></code>: special character (&amp;)</p>
-<p><code class="docutils literal notranslate"><span class="pre">fr</span></code>: not very descriptive</p>
-<p><code class="docutils literal notranslate"><span class="pre">frame_rate</span></code>: perfect</p>
-<p><code class="docutils literal notranslate"><span class="pre">temperature</span></code>: perfect</p>
-<p><code class="docutils literal notranslate"><span class="pre">def</span></code>: reserved word</p>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -574,19 +590,12 @@ break               for                 not
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="IntrotoArrays.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction</p>
+            <p class="prev-next-title">Intro to Arrays</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="MathOperators.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Math Operators</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
