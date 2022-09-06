@@ -5,8 +5,8 @@ parts:
     chapters:
     - file: content/Variables.ipynb
     - file: content/MathOperators.ipynb
-#     - file: content/IntrotoArrays.ipynb
-#     - file: content/ArrayComputations.ipynb
+    - file: content/IntrotoArrays.ipynb
+    - file: content/ArrayComputations.ipynb
 #     - file: content/Indexing.ipynb
 #     - file: content/CreatingReshaping.ipynb
 #     - file: content/Day1_InClass.ipynb
