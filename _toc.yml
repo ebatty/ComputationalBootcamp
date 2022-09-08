@@ -11,3 +11,4 @@ parts:
     - file: content/CreatingReshaping.ipynb
     - file: content/Plotting.ipynb
     - file: content/Day1_InClass.ipynb
+    - file: content/TuningCurvesTutorials.ipynb
