@@ -12,3 +12,6 @@ parts:
     - file: content/Plotting.ipynb
     - file: content/Day1_InClass.ipynb
     - file: content/TuningCurvesTutorial.ipynb
+  - caption: Week 2
+    chapters:
+    - file: content/ComparisonLogicalOperators.ipynb
