@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Math Operators &#8212; Computational Bootcamp</title>
+    <title>If statements &#8212; Computational Bootcamp</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Intro to Arrays" href="IntrotoArrays.html" />
-    <link rel="prev" title="Variables" href="Variables.html" />
+    <link rel="next" title="For Loops" href="ForLoops.html" />
+    <link rel="prev" title="Comparison &amp; Logical Operators" href="ComparisonLogicalOperators.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -115,14 +115,14 @@ const thebe_selector_output = ".output, .cell_output"
   Week 1
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Variables.html">
    Variables
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="MathOperators.html">
    Math Operators
   </a>
  </li>
@@ -167,14 +167,14 @@ const thebe_selector_output = ".output, .cell_output"
   Week 2
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="ComparisonLogicalOperators.html">
    Comparison &amp; Logical Operators
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="IfStatements.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    If statements
   </a>
  </li>
@@ -242,7 +242,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://colab.research.google.com/github/QMBC-Python/QMBC-Python.github.io/blob/main/content/MathOperators.ipynb"
+        <a href="https://colab.research.google.com/github/QMBC-Python/QMBC-Python.github.io/blob/main/content/IfStatements.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -303,7 +303,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/content/MathOperators.ipynb"
+        <a href="../_sources/content/IfStatements.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -363,13 +363,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#types-of-math-operators">
-   Types of math operators
+  <a class="reference internal nav-link" href="#video">
+   Video
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#order-of-operations">
-   Order of operations
+  <a class="reference internal nav-link" href="#slides">
+   Slides
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notes">
+   Notes
   </a>
  </li>
 </ul>
@@ -381,7 +386,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Math Operators</h1>
+                <h1>If statements</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -392,13 +397,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#types-of-math-operators">
-   Types of math operators
+  <a class="reference internal nav-link" href="#video">
+   Video
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#order-of-operations">
-   Order of operations
+  <a class="reference internal nav-link" href="#slides">
+   Slides
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notes">
+   Notes
   </a>
  </li>
 </ul>
@@ -411,179 +421,73 @@ title="Print to PDF"
                 
               <div>
                 
-  <p><a href="https://colab.research.google.com/github/ebatty/ComputationalBootcamp/blob/master/content/MathOperators.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-<section class="tex2jax_ignore mathjax_ignore" id="math-operators">
-<h1>Math Operators<a class="headerlink" href="#math-operators" title="Permalink to this headline">#</a></h1>
-<p>Video: Math Operators</p>
+  <p><a href="https://colab.research.google.com/github/ebatty/ComputationalBootcamp/blob/master/content/IfStatements.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="if-statements">
+<h1>If statements<a class="headerlink" href="#if-statements" title="Permalink to this headline">#</a></h1>
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Permalink to this headline">#</a></h2>
+<p>Video: If statements</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=Dv96O72prMA
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=1MYjPiou54A
 </pre></div>
 </div>
 <div class="output text_html">
 <iframe
     width="730"
     height="410"
-    src="https://www.youtube.com/embed/Dv96O72prMA?fs=1"
+    src="https://www.youtube.com/embed/1MYjPiou54A?fs=1"
     frameborder="0"
     allowfullscreen
 
 ></iframe>
 </div></div>
 </div>
-<section id="types-of-math-operators">
-<h2>Types of math operators<a class="headerlink" href="#types-of-math-operators" title="Permalink to this headline">#</a></h2>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Symbol</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>+</p></td>
-<td><p>Addition</p></td>
-</tr>
-<tr class="row-odd"><td><p>-</p></td>
-<td><p>Subtraction</p></td>
-</tr>
-<tr class="row-even"><td><p>*</p></td>
-<td><p>Multiplication</p></td>
-</tr>
-<tr class="row-odd"><td><p>/</p></td>
-<td><p>Division</p></td>
-</tr>
-<tr class="row-even"><td><p>//</p></td>
-<td><p>Integer division</p></td>
-</tr>
-<tr class="row-odd"><td><p>%</p></td>
-<td><p>Modulus operator</p></td>
-</tr>
-</tbody>
-</table>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">+</span> <span class="mi">2</span>
-</pre></div>
-</div>
-</div>
+</section>
+<section id="slides">
+<h2>Slides<a class="headerlink" href="#slides" title="Permalink to this headline">#</a></h2>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">-</span> <span class="mi">2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">*</span> <span class="mi">3</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">/</span> <span class="mi">3</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.6666666666666667
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">**</span> <span class="mi">3</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>125
-</pre></div>
-</div>
-</div>
-</div>
-<p>Can use variables too!</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">x</span><span class="o">*</span><span class="n">y</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15
-</pre></div>
-</div>
-</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "7bfa0dda87e74ea08bad2e54ed3a11f4"}
+</script></div>
 </div>
 </section>
-<section id="order-of-operations">
-<h2>Order of operations<a class="headerlink" href="#order-of-operations" title="Permalink to this headline">#</a></h2>
-<p>Instead of doing math operations in a left to right order, there is an order of priority:</p>
-<ol class="simple">
-<li><p>Parentheses first</p></li>
-<li><p>Exponents</p></li>
-<li><p>Multiplication/division</p></li>
-<li><p>Addition/subtraction</p></li>
-</ol>
-<p>This can be remembered with PEMDAS</p>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">#</a></h2>
+<p><img alt="picture" src="https://raw.githubusercontent.com/QMBC-Python/QMBC-Python.github.io/main/images/IfStatement.jpg" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="mi">65</span>
+
+<span class="k">if</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;put on jacket&#39;</span><span class="p">)</span>
+
+<span class="k">elif</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="mi">40</span> <span class="ow">and</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;put on sweater&#39;</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;put on sunglasses&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;go outside&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>put on sunglasses
+go outside
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 </section>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"2868e3cf9ab64139ae9feb3bfbf5efdd": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7bfa0dda87e74ea08bad2e54ed3a11f4": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_2868e3cf9ab64139ae9feb3bfbf5efdd", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "<IPython.lib.display.IFrame at 0x7fd9002032d0>", "text/html": "\n        <iframe\n            width=\"730\"\n            height=\"410\"\n            src=\"https://mfr.osf.io/render?url=https://osf.io/znr6y/?direct%26mode=render%26action=download%26mode=rende\"\n            frameborder=\"0\"\n            allowfullscreen\n            \n        ></iframe>\n        "}}]}}}, "version_major": 2, "version_minor": 0}
+</script>
+
 
     <script type="text/x-thebe-config">
     {
@@ -612,17 +516,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Variables.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="ComparisonLogicalOperators.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Variables</p>
+            <p class="prev-next-title">Comparison &amp; Logical Operators</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="IntrotoArrays.html" title="next page">
+    <a class='right-next' id="next-link" href="ForLoops.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Intro to Arrays</p>
+        <p class="prev-next-title">For Loops</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
