@@ -15,3 +15,5 @@ parts:
   - caption: Week 2
     chapters:
     - file: content/ComparisonLogicalOperators.ipynb
+    - file: content/IfStatements.ipynb
+    - file: content/ForLoops.ipynb
