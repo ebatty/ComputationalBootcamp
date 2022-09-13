@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Day 3 In-class activities &#8212; Computational Bootcamp</title>
+    <title>Day 3 In-class activities Solutions &#8212; Computational Bootcamp</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,8 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Day 3 In-class activities Solutions" href="Day3_InClass_Activities_Solutions.html" />
-    <link rel="prev" title="For Loops" href="ForLoops.html" />
+    <link rel="prev" title="Day 3 In-class activities" href="Day3_InClass_Activities.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -183,13 +182,13 @@ const thebe_selector_output = ".output, .cell_output"
    For Loops
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Day3_InClass_Activities.html">
    Day 3 In-class activities
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Day3_InClass_Activities_Solutions.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Day 3 In-class activities Solutions
   </a>
  </li>
@@ -252,7 +251,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://colab.research.google.com/github/QMBC-Python/QMBC-Python.github.io/blob/main/content/Day3_InClass_Activities.ipynb"
+        <a href="https://colab.research.google.com/github/QMBC-Python/QMBC-Python.github.io/blob/main/content/Day3_InClass_Activities_Solutions.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -313,7 +312,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/content/Day3_InClass_Activities.ipynb"
+        <a href="../_sources/content/Day3_InClass_Activities_Solutions.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -374,7 +373,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Day 3 In-class activities
+   Day 3 In-class activities Solutions
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -440,7 +439,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Day 3 In-class activities</h1>
+                <h1>Day 3 In-class activities Solutions</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -452,7 +451,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Day 3 In-class activities
+   Day 3 In-class activities Solutions
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -519,9 +518,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <p><a href="https://colab.research.google.com/github/ebatty/ComputationalBootcamp/blob/master/content/Day3_InClass_Activities.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-<section class="tex2jax_ignore mathjax_ignore" id="day-3-in-class-activities">
-<h1>Day 3 In-class activities<a class="headerlink" href="#day-3-in-class-activities" title="Permalink to this headline">#</a></h1>
+  <p><a href="https://colab.research.google.com/github/ebatty/ComputationalBootcamp/blob/master/content/Day3_InClass_Activities_Solutions.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="day-3-in-class-activities-solutions">
+<h1>Day 3 In-class activities Solutions<a class="headerlink" href="#day-3-in-class-activities-solutions" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -544,6 +543,24 @@ title="Print to PDF"
     <span class="n">count</span> <span class="o">-=</span> <span class="mi">1</span>
 </pre></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i_m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span> <span class="c1"># will range from 0 up to 19</span>
+  <span class="k">if</span> <span class="n">i_m</span> <span class="o">&gt;</span> <span class="mi">15</span><span class="p">:</span> <span class="c1"># 16, 17, 18, 19 would satisfy this condition</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># adds 4 in total</span>
+  <span class="k">elif</span> <span class="n">i_m</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">:</span> <span class="c1"># 0, 1, 2, 3 would satisfy this condition</span>
+    <span class="n">count</span> <span class="o">-=</span> <span class="mi">1</span> <span class="c1"># subtracts 4 in total</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="problem-2">
 <h2>Problem 2<a class="headerlink" href="#problem-2" title="Permalink to this headline">#</a></h2>
@@ -554,6 +571,27 @@ title="Print to PDF"
 <p>Otherwise, print the number</p>
 <p>For example, n = 15 should lead to ‘Fizzbuzz’, n = 4 should lead to 4, and n = 5 should lead to ‘Buzz’.</p>
 <p><strong>Start by writing pseudocode for this, then move to the actual code</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">15</span>
+
+<span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;FizzBuzz&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fizz&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Buzz&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FizzBuzz
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="problem-3">
 <h2>Problem 3<a class="headerlink" href="#problem-3" title="Permalink to this headline">#</a></h2>
@@ -561,9 +599,36 @@ title="Print to PDF"
 <p>If the row is greater than the column, make the value equal to the page.</p>
 <p>Otherwise, if on the second page make the value equal to the row position, unless you are on the diagonal (and the second page)  in which case make the value equal to -5. The diagonal is where the row number equals the column number.</p>
 <p>Finally, if no other condition is met, make the value equal to the column position.</p>
-<p><strong>Start by writing pseudocode for this, then move to the actual code</strong></p>
-<p>Hints</p>
-<p><strong>(Optional, advanced) Problem 4: Fibonacci Sequence:</strong></p>
+<p><strong>Start by breaking this into smaller steps to figure out, then write pseudocode, then move to the actual code</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i_row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+
+  <span class="k">for</span> <span class="n">i_column</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">):</span>
+
+    <span class="k">for</span> <span class="n">i_page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+
+      <span class="k">if</span> <span class="n">i_row</span> <span class="o">&gt;</span> <span class="n">i_column</span><span class="p">:</span>
+
+          <span class="n">x</span><span class="p">[</span><span class="n">i_row</span><span class="p">,</span> <span class="n">i_column</span><span class="p">,</span> <span class="n">i_page</span><span class="p">]</span> <span class="o">=</span> <span class="n">i_page</span>
+
+      <span class="k">elif</span> <span class="n">i_page</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">i_row</span> <span class="o">==</span> <span class="n">i_column</span><span class="p">:</span>
+
+        <span class="n">x</span><span class="p">[</span><span class="n">i_row</span><span class="p">,</span> <span class="n">i_column</span><span class="p">,</span> <span class="n">i_page</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>
+
+      <span class="k">elif</span> <span class="n">i_page</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">i_row</span> <span class="o">!=</span> <span class="n">i_column</span><span class="p">:</span>
+
+        <span class="n">x</span><span class="p">[</span><span class="n">i_row</span><span class="p">,</span> <span class="n">i_column</span><span class="p">,</span> <span class="n">i_page</span><span class="p">]</span> <span class="o">=</span> <span class="n">i_row</span>
+        
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">i_row</span><span class="p">,</span> <span class="n">i_column</span><span class="p">,</span> <span class="n">i_page</span><span class="p">]</span> <span class="o">=</span> <span class="n">i_column</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>(Optional, advanced) Problem 5: Fibonacci Sequence:</strong></p>
 <p><strong>Come back to this after completing Section 2 if you have time</strong></p>
 <p>Write code to print a numpy array containing the Fibonacci sequence of length given by variable <code class="docutils literal notranslate"><span class="pre">num</span></code>.</p>
 <p>The Fibonacci sequence starts with 0, 1, and after that each entry is the sum of the two prior, so</p>
@@ -572,14 +637,38 @@ title="Print to PDF"
 <p>Examples:</p>
 <p>If num is 2, you should print the numpy array [0, 1].</p>
 <p>If num is 4, you should print the numpy array [0, 1, 1, 2].</p>
-<p><strong>(Optional, advanced) Problem 5:</strong> Finding number with a factor of 7</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">fib_seq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">elif</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="n">fib_seq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">fib_seq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num</span><span class="p">))</span>
+    <span class="n">fib_seq</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">fib_seq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+        <span class="n">fib_seq</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">fib_seq</span><span class="p">[</span><span class="n">ind</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">fib_seq</span><span class="p">[</span><span class="n">ind</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fib_seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0. 1. 1. 2.]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>(Optional, advanced) Problem 6:</strong> Finding number with a factor of 7</p>
 <p><strong>Come back to this after completing Section 2 if you have time</strong></p>
 <p>Print the first number higher than 35 that has 7 as a factor. Please use a while loop to do so.</p>
 <p>If stuck, double click on the cell below to access hints.</p>
-<div class="cell docutils container">
+<p>Hints</p>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @markdown Hints</span>
-
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">If stuck, break it into little steps:</span>
 
@@ -591,6 +680,24 @@ title="Print to PDF"
 
 <span class="sd">4) Are you sure you&#39;re printing the correct number, not one higher than you want?</span>
 <span class="sd">&quot;&quot;&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">div_seven</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">count</span> <span class="o">=</span> <span class="mi">35</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="n">div_seven</span><span class="p">:</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">div_seven</span> <span class="o">=</span> <span class="p">(</span> <span class="n">count</span> <span class="o">%</span> <span class="mi">7</span> <span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">div_seven</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -626,6 +733,13 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code to choose a prize door here</span>
+<span class="n">prize_door</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prize_door</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
 </div>
@@ -637,6 +751,13 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code to get the players choice of doors here</span>
+<span class="n">chosen_door</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">chosen_door</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
 </div>
@@ -649,10 +770,20 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code for host reveal here</span>
+<span class="k">for</span> <span class="n">door</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">door</span> <span class="o">!=</span> <span class="n">chosen_door</span> <span class="ow">and</span> <span class="n">door</span> <span class="o">!=</span> <span class="n">prize_door</span><span class="p">:</span>
+        <span class="n">revealed_door</span> <span class="o">=</span> <span class="n">door</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">revealed_door</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
 </pre></div>
 </div>
 </div>
 </div>
+<p>What if we wanted randomness?</p>
 </section>
 <section id="determining-winner">
 <h2>Determining winner<a class="headerlink" href="#determining-winner" title="Permalink to this headline">#</a></h2>
@@ -660,6 +791,15 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code to determine if the player won</span>
+<span class="k">if</span> <span class="n">prize_door</span> <span class="o">==</span> <span class="n">chosen_door</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Player wins!&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Player lost&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Player wins!
 </pre></div>
 </div>
 </div>
@@ -672,6 +812,25 @@ previous code and put it together (i.e. copy and paste below). Now loop over it 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code to loop over simulations</span>
+<span class="n">n_simulations</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">win_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">sim</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">):</span>
+
+  <span class="c1"># Choose which door has the prize</span>
+  <span class="n">prize_door</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+  <span class="c1"># Choose which door the player chooses</span>
+  <span class="n">chosen_door</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+  <span class="c1"># Choose which door the host opens</span>
+  <span class="k">for</span> <span class="n">door</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">door</span> <span class="o">!=</span> <span class="n">chosen_door</span> <span class="ow">and</span> <span class="n">door</span> <span class="o">!=</span> <span class="n">prize_door</span><span class="p">:</span>
+      <span class="n">revealed_door</span> <span class="o">=</span> <span class="n">door</span>
+
+  <span class="c1"># Figure out whether the player will win or lose if they stay with their choice</span>
+  <span class="k">if</span> <span class="n">prize_door</span> <span class="o">==</span> <span class="n">chosen_door</span><span class="p">:</span>
+      <span class="n">win_count</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </div>
@@ -679,14 +838,14 @@ previous code and put it together (i.e. copy and paste below). Now loop over it 
 <p>Print the proportion of the time the player won over the 1000 simulations if they always chose to stay with their original door.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">win_proportion</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># your code here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">win_proportion</span> <span class="o">=</span> <span class="n">win_count</span><span class="o">/</span><span class="n">n_simulations</span> <span class="c1"># your code here</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The proportion of wins is </span><span class="si">{</span><span class="n">win_proportion</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The proportion of wins is Ellipsis
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The proportion of wins is 0.34
 </pre></div>
 </div>
 </div>
@@ -694,6 +853,54 @@ previous code and put it together (i.e. copy and paste below). Now loop over it 
 <p>If you played this game, would you stay or switch?</p>
 <p><strong>Very advanced optional follow-up</strong>:</p>
 <p>What is the probability that 2 or more people in a class of 30 share a birthday? Figure it out with code simulations, not probabilities</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_simulations</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">n_people</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="c1"># I&#39;ll pick the birthdays of each person from 0 to 365 (the number of days)</span>
+<span class="n">birthdays</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">365</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_people</span><span class="p">,</span> <span class="n">n_simulations</span><span class="p">))</span>
+
+<span class="c1"># I&#39;ll check if there are any duplicates by checking if the number of unique elements equals the number of birthdays</span>
+<span class="n">n_duplicates_occured</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i_sim</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">):</span>
+  <span class="n">n_duplicates_occured</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">birthdays</span><span class="p">[:,</span> <span class="n">i_sim</span><span class="p">]))</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">birthdays</span><span class="p">[:,</span> <span class="n">i_sim</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">n_duplicates_occured</span><span class="o">/</span><span class="n">n_simulations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.687
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -724,19 +931,12 @@ previous code and put it together (i.e. copy and paste below). Now loop over it 
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="ForLoops.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Day3_InClass_Activities.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">For Loops</p>
+            <p class="prev-next-title">Day 3 In-class activities</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="Day3_InClass_Activities_Solutions.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Day 3 In-class activities Solutions</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
