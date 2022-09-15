@@ -19,3 +19,4 @@ parts:
     - file: content/ForLoops.ipynb
     - file: content/Day3_InClass_Activities.ipynb
     - file: content/Day3_InClass_Activities_Solutions.ipynb
+    - file: content/LinearDecodingModels.ipynb
