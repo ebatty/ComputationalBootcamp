@@ -20,3 +20,8 @@ parts:
     - file: content/Day3_InClass_Activities.ipynb
     - file: content/Day3_InClass_Activities_Solutions.ipynb
     - file: content/LinearDecodingModels.ipynb
+  - caption: Week 2
+    chapters:
+    - file: content/UsingFunctions.ipynb
+    - file: content/WritingFunctions.ipynb
+    - file: content/Objects.ipynb
