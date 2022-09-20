@@ -26,4 +26,4 @@ parts:
     - file: content/WritingFunctions.ipynb
     - file: content/Objects.ipynb
     - file: content/FunctionsPractice.ipynb
-
+    - file: content/DNAParsing.ipynb
