@@ -25,3 +25,5 @@ parts:
     - file: content/UsingFunctions.ipynb
     - file: content/WritingFunctions.ipynb
     - file: content/Objects.ipynb
+    - file: content/FunctionsPractice.ipynb
+
