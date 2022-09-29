@@ -27,6 +27,7 @@ parts:
     - file: content/Objects.ipynb
     - file: content/FunctionsPractice.ipynb
     - file: content/DNAParsing.ipynb
+    - file: content/DNAParsing_Solutions.ipynb
   - caption: Week 4
     chapters:
     - file: content/DeepNetworksandVision.ipynb
