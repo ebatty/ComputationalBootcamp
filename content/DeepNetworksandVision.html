@@ -1,0 +1,1168 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Deep Neural Networks and Vision &#8212; Computational Bootcamp</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="DNA Parsing" href="DNAParsing.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Computational Bootcamp</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Variables.html">
+   Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MathOperators.html">
+   Math Operators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="IntrotoArrays.html">
+   Intro to Arrays
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ArrayComputations.html">
+   Array Computations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Indexing.html">
+   Indexing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CreatingReshaping.html">
+   Creating &amp; Reshaping Arrays
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Plotting.html">
+   Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Day1_InClass.html">
+   In-class activities
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="TuningCurvesTutorial.html">
+   Visualizing Neural Responses &amp; Building Tuning Curves
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ComparisonLogicalOperators.html">
+   Comparison &amp; Logical Operators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="IfStatements.html">
+   If statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ForLoops.html">
+   For Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Day3_InClass_Activities.html">
+   Day 3 In-class activities
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Day3_InClass_Activities_Solutions.html">
+   Day 3 In-class activities Solutions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="LinearDecodingModels.html">
+   Linear Decoding Models
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="UsingFunctions.html">
+   Using Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="WritingFunctions.html">
+   Writing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Objects.html">
+   Objects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FunctionsPractice.html">
+   Functions Practice
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DNAParsing.html">
+   DNA Parsing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 4
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Deep Neural Networks and Vision
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/QMBC-Python/QMBC-Python.github.io/blob/main/content/DeepNetworksandVision.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/content/DeepNetworksandVision.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-1-neural-responses">
+   Section 1: Neural responses
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1-rdm-for-area-it">
+     Exercise 1: RDM for area IT
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2-interpreting-rdms">
+     Exercise 2: Interpreting RDMs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-2-convolutional-neural-network">
+   Section 2: Convolutional neural network
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3-rdms-of-cnn-activations">
+     Exercise 3: RDMs of CNN activations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-4-examining-the-convolutional-filters-of-the-first-layer">
+     Exercise 4: Examining the convolutional filters of the first layer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#optional-very-advanced-exercise-5-predicting-neural-responses">
+     (Optional, very advanced) Exercise 5) Predicting neural responses
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Deep Neural Networks and Vision</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-1-neural-responses">
+   Section 1: Neural responses
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1-rdm-for-area-it">
+     Exercise 1: RDM for area IT
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2-interpreting-rdms">
+     Exercise 2: Interpreting RDMs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-2-convolutional-neural-network">
+   Section 2: Convolutional neural network
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3-rdms-of-cnn-activations">
+     Exercise 3: RDMs of CNN activations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-4-examining-the-convolutional-filters-of-the-first-layer">
+     Exercise 4: Examining the convolutional filters of the first layer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#optional-very-advanced-exercise-5-predicting-neural-responses">
+     (Optional, very advanced) Exercise 5) Predicting neural responses
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/ebatty/ComputationalBootcamp/blob/master/content/DeepNetworksandVision.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="deep-neural-networks-and-vision">
+<h1>Deep Neural Networks and Vision<a class="headerlink" href="#deep-neural-networks-and-vision" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">scipy.io</span> <span class="k">as</span> <span class="nn">sio</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="nn">transforms</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1908</span><span class="o">/</span><span class="mf">3919300236.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">scipy.io</span> <span class="k">as</span> <span class="nn">sio</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="nn">transforms</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;torchvision&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Execute the next cell to download and process the data. It takes a few minutes so do this first.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">io</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://osf.io/wh3nb/download&#39;</span><span class="p">)</span>
+<span class="n">IT_resps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">7</span><span class="o">*</span><span class="mi">7</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">168</span><span class="p">))</span>  
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://osf.io/wcdsa/download&#39;</span><span class="p">)</span>
+<span class="n">V4_resps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">7</span><span class="o">*</span><span class="mi">7</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">128</span><span class="p">))</span>  
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://osf.io/t2jqc/download&#39;</span><span class="p">)</span>
+<span class="n">images</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">7</span><span class="o">*</span><span class="mi">7</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="n">images</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">moveaxis</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will be looking at neural data from https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003963</p>
+<p>The authors presented images to monkeys while recording from areas V4 and IT.</p>
+<p><strong>Images:</strong> They presented images from 7 different categories (Animals, Cars, Chairs, Faces, Fruits, Planes, and Tables). In each category, they had 7 separate objects. They created 40 configurations of each object, showing it on top of different backgrounds and in different sizes, shapes, and rotations. They presented each of these 1960 images (7 categories x 7 objects x 40 configurations) around 40 times.</p>
+<p>You can see 5 examples for 4 of the 7 objects in the Animals category by executing the next cell.</p>
+<p>Execute to visualize images</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @markdown Execute to visualize images</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i_row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">i_col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i_row</span><span class="p">][</span><span class="n">i_col</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">images</span><span class="p">[</span><span class="n">i_row</span><span class="p">,</span> <span class="n">i_col</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i_row</span><span class="p">][</span><span class="n">i_col</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">yticks</span> <span class="o">=</span> <span class="p">[])</span>
+  <span class="n">axes</span><span class="p">[</span><span class="n">i_row</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Object </span><span class="si">{</span><span class="n">i_row</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/DeepNetworksandVision_7_0.png" src="../_images/DeepNetworksandVision_7_0.png" />
+</div>
+</div>
+<p><strong>Neural activity</strong>: While presenting the above images, the authors recorded 168 cells from area IT and 128 cells from area V4. For each image, they summed the spiking responses of each neuron from 70 to 170 ms after the image presentation to get a response per neuron per image.  Note this removes any temporal information. They also normalized these values so don’t be alarmed if you see negative values for neural responses.</p>
+<p>Execute the following cell to visualize an example neuron’s responses to the 1960 images.</p>
+<p>Execute to see example neural responses</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @markdown Execute to see example neural responses</span>
+
+<span class="n">categories</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;Animals&#39;</span><span class="p">,</span> <span class="s1">&#39;Cars&#39;</span><span class="p">,</span> <span class="s1">&#39;Chairs&#39;</span><span class="p">,</span> <span class="s1">&#39;Faces&#39;</span><span class="p">,</span> <span class="s1">&#39;Fruits&#39;</span><span class="p">,</span> <span class="s1">&#39;Planes&#39;</span><span class="p">,</span> <span class="s1">&#39;Tables&#39;</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">IT_resps</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,)),</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ylim</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1900</span><span class="p">,</span> <span class="mi">7</span><span class="o">*</span><span class="mi">40</span><span class="p">):</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="n">ylim</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1960</span><span class="p">,</span> <span class="mi">7</span><span class="o">*</span><span class="mi">40</span><span class="p">),</span>
+       <span class="n">xticklabels</span> <span class="o">=</span> <span class="n">categories</span><span class="p">,</span>
+       <span class="n">ylabel</span> <span class="o">=</span> <span class="s1">&#39;Neural Response&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/DeepNetworksandVision_10_0.png" src="../_images/DeepNetworksandVision_10_0.png" />
+</div>
+</div>
+<section id="section-1-neural-responses">
+<h2>Section 1: Neural responses<a class="headerlink" href="#section-1-neural-responses" title="Permalink to this headline">#</a></h2>
+<section id="exercise-1-rdm-for-area-it">
+<h3>Exercise 1: RDM for area IT<a class="headerlink" href="#exercise-1-rdm-for-area-it" title="Permalink to this headline">#</a></h3>
+<p>Let’s look at how the different objects and categories are represented in area IT by constructing a representational dissimilarity matrix (RDM). The data is already ordered by category: the first seven rows are the animal images, the next seven are the car images, and so on.</p>
+<p><code class="docutils literal notranslate"><span class="pre">IT_resps</span></code> is a 49 x 40 x 168 array. The first dimension is the object (7 categories x 7 objects per category = 49). The data is already ordered by category: the first seven rows are the animal images, the next seven are the car images, and so on. The second dimension is the 40 different configurations per category. And the third dimension corresponds to the 168 area IT neurons.</p>
+<p><strong>Step 1)</strong> First, average the neural responses over the 40 different configurations of each object. What size array should you have?</p>
+<p><strong>Step 2)</strong> Compute the representational dissimilarity matrix for this data and store it in a variable called <code class="docutils literal notranslate"><span class="pre">rdm</span></code>. This should be a 49 x 49 matrix where each entry equals 1 minus the correlation of the neural responses to two images (the image represented by the row number and the image represented by the column number). So the entry at row 4, column 8 is 1 minus the correlation of the responses to images 4 and 8.</p>
+<p><em>Hint 1:</em> No need to vectorize this - looping over rows and columns is useful</p>
+<p><em>Hint 2:</em> To compute the correlation coefficient between two numpy arrays, use np.corrcoef as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">example_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">200</span><span class="p">,)</span>
+<span class="n">example_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">200</span><span class="p">,)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">example_x</span><span class="p">,</span> <span class="n">example_y</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Step 3)</strong> Visualize the RDM. What sort of plot should you use? Try to label the different categories on the x axis and y axis. The ordering of categoies is in the variable <code class="docutils literal notranslate"><span class="pre">categories</span></code></p>
+<p><em>Hint 1:</em> You will need to set the ticks first (<code class="docutils literal notranslate"><span class="pre">ax.set(xticks=...)</span></code>) and then change what the labels of thos ticks should be (<code class="docutils literal notranslate"><span class="pre">ax.set_xticklabels(...)</span></code>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute RDM for IT responses</span>
+
+<span class="c1"># Step 1) Average over 40 configs per object</span>
+
+<span class="c1"># Step 2) Compute RDM</span>
+
+<span class="c1"># Step 3) Visualize your RDM</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Click here for the solution</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @markdown Click here for the solution</span>
+
+<span class="c1"># Step 1) Average over 40 configs per object</span>
+<span class="n">averaged_IT</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">IT_resps</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Step 2) Compute RDM</span>
+<span class="n">rdm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">49</span><span class="p">,</span> <span class="mi">49</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i_row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rdm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+  <span class="k">for</span> <span class="n">i_col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rdm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="n">rdm</span><span class="p">[</span><span class="n">i_row</span><span class="p">,</span> <span class="n">i_col</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">averaged_IT</span><span class="p">[</span><span class="n">i_row</span><span class="p">,</span> <span class="p">:],</span> <span class="n">averaged_IT</span><span class="p">[</span><span class="n">i_col</span><span class="p">,</span> <span class="p">:])[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Step 3) Visualize rdm</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rdm</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;jet&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i_cat</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">i_cat</span><span class="p">,</span> <span class="n">i_cat</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">],</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">],</span> <span class="p">[</span><span class="n">i_cat</span><span class="p">,</span> <span class="n">i_cat</span><span class="p">],</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">yticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">],</span> <span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">49</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7efd24c38c10&gt;
+</pre></div>
+</div>
+<img alt="../_images/DeepNetworksandVision_15_1.png" src="../_images/DeepNetworksandVision_15_1.png" />
+</div>
+</div>
+</section>
+<section id="exercise-2-interpreting-rdms">
+<h3>Exercise 2: Interpreting RDMs<a class="headerlink" href="#exercise-2-interpreting-rdms" title="Permalink to this headline">#</a></h3>
+<p>In the cell below, you can see the RDMs for the V4 neural responses and the IT neural responses.</p>
+<p>Discuss the following questions:</p>
+<p>A) Within a category, does the population of IT neurons often respond similarly for different objects? What category is this especially true of? What does this tell you about the type of coding in area IT, e.g. the complexity of the features encoded?</p>
+<p>B) How does the V4 RDM differ from the IT RDM? What does this tell you about V4 processing as compared to IT processing?)**</p>
+<p>C) If you recorded from V1 neurons and constructed an RDM, what would you expect it to look like?</p>
+<p>Execute to visualize RDMs for area IT and V4</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @markdown Execute to visualize RDMs for area IT and V4</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">zscore</span>
+
+<span class="k">def</span> <span class="nf">compute_RDM</span><span class="p">(</span><span class="n">resp</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Compute the representational dissimilarity matrix (RDM)</span>
+<span class="sd">  Args:</span>
+<span class="sd">    resp (ndarray): S x N matrix with population responses to</span>
+<span class="sd">      each stimulus in each row</span>
+<span class="sd">  Returns:</span>
+<span class="sd">    ndarray: S x S representational dissimilarity matrix</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># z-score responses to each stimulus</span>
+  <span class="n">zresp</span> <span class="o">=</span> <span class="n">zscore</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+  <span class="c1"># Compute RDM</span>
+  <span class="n">RDM</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">zresp</span> <span class="o">@</span> <span class="n">zresp</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">zresp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+  <span class="k">return</span> <span class="n">RDM</span>
+
+<span class="n">V4_rdm</span> <span class="o">=</span> <span class="n">compute_RDM</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">V4_resps</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">IT_rdm</span> <span class="o">=</span> <span class="n">compute_RDM</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">IT_resps</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">cax</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> 
+                  <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;width_ratios&quot;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">]})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">V4_rdm</span><span class="p">,</span> <span class="n">vmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mf">1.75</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;jet&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i_cat</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">i_cat</span><span class="p">,</span> <span class="n">i_cat</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">],</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">],</span> <span class="p">[</span><span class="n">i_cat</span><span class="p">,</span> <span class="n">i_cat</span><span class="p">],</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">yticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">],</span> <span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">49</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;V4 RDM&#39;</span><span class="p">)</span>
+
+<span class="n">im</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">IT_rdm</span><span class="p">,</span> <span class="n">vmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mf">1.75</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;jet&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i_cat</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+  <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">i_cat</span><span class="p">,</span> <span class="n">i_cat</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">],</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+  <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">],</span> <span class="p">[</span><span class="n">i_cat</span><span class="p">,</span> <span class="n">i_cat</span><span class="p">],</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">yticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">],</span> <span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">49</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;IT RDM&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/DeepNetworksandVision_19_0.png" src="../_images/DeepNetworksandVision_19_0.png" />
+</div>
+</div>
+<p>Click here for the solution</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @markdown Click here for the solution</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">A) Yes, the diagonal blocks that represent the same category en dark blue for area IT, </span>
+<span class="sd">meaning the responses are similar for different objects in the same category. </span>
+<span class="sd">This is especially true of faces. This shows that the IT neurons are not responding </span>
+<span class="sd">to low-level features such as edges or orientations, because those would differ a </span>
+<span class="sd">lot for different objects (and configurations) even in the same category. Instead, </span>
+<span class="sd">area IT is representing more high-level information about object identity.</span>
+
+<span class="sd">B) The V4 RDM has much less block-like structure. Let&#39;s take the diagonal blocks - </span>
+<span class="sd">those are not as fully blue as in the IT RDM. This means that the neural responses </span>
+<span class="sd">to objects in the same category are not as uniformly similar. There is much less </span>
+<span class="sd">category-level grouping in the responses. This shows that V4 is responding to </span>
+<span class="sd">lower-level features and not high-level category representation.</span>
+
+<span class="sd">C) I&#39;d expect a V1 RDM to be even less structured than a V4 neurons - with very </span>
+<span class="sd">little discernable structure. V1 neurons respond to edges and these would be </span>
+<span class="sd">different even for the configurations of an object that we&#39;ve already averaged </span>
+<span class="sd">over, let alone different objects in the same category.</span>
+<span class="sd">&quot;&quot;&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="section-2-convolutional-neural-network">
+<h2>Section 2: Convolutional neural network<a class="headerlink" href="#section-2-convolutional-neural-network" title="Permalink to this headline">#</a></h2>
+<p>We will examine a convolutional neural network, specifically AlexNet, a network that was state-of-the-art at object recognition in 2012. Execute the following cell to load in our model, AlexNet. It consists of 5 convolutional layers followed by 2 feedforward layers, followed by the output layer (see schematic <a class="reference external" href="https://www.researchgate.net/profile/Alexander-Khvostikov/publication/322592079/figure/fig3/AS:584350454263818&#64;1516331413967/AlexNet-architecture-Includes-5-convolutional-layers-and-3-fullyconnected-layers.png">here</a>). We have loaded in the learned weights and architecture.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Execute this cell to load in AlexNet model</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="n">model_orig</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">alexnet</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">AlexNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">AlexNet</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">features</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="o">*</span><span class="nb">list</span><span class="p">(</span><span class="n">model_orig</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">children</span><span class="p">())</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">avgpool</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">AdaptiveAvgPool2d</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="o">*</span><span class="nb">list</span><span class="p">(</span><span class="n">model_orig</span><span class="o">.</span><span class="n">classifier</span><span class="o">.</span><span class="n">children</span><span class="p">())</span>
+        <span class="p">)</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">activations</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">conv_features</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i_feature</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">model_orig</span><span class="o">.</span><span class="n">features</span><span class="p">)):</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">[</span><span class="n">i_feature</span><span class="p">](</span><span class="n">x</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">i_feature</span> <span class="ow">in</span> <span class="n">conv_features</span><span class="p">:</span>
+              <span class="n">activations</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;conv.</span><span class="si">{</span><span class="n">conv_features</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">i_feature</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">avgpool</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">classifier_features</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i_classifier</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">model_orig</span><span class="o">.</span><span class="n">classifier</span><span class="p">)):</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span><span class="p">[</span><span class="n">i_classifier</span><span class="p">](</span><span class="n">x</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">i_feature</span> <span class="ow">in</span> <span class="n">classifier_features</span><span class="p">:</span>
+              <span class="n">activations</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;feedforward.</span><span class="si">{</span><span class="n">classifier_features</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">i_feature</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+
+        <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">activations</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">AlexNet</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+<span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1908</span><span class="o">/</span><span class="mf">1815341253.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Execute this cell to load in AlexNet model</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">torch</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;torch&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can push our images through the model and record the unit activations. Let’s push 100 images through below.</p>
+<p>We end up with a dictionary <code class="docutils literal notranslate"><span class="pre">CNN_acts</span></code>. To get the activations of the first layer to the 100 images, you can use <code class="docutils literal notranslate"><span class="pre">CNN_acts['conv.0']</span></code>. This is an array of size (100, 64, 27, 27). We have 64 x 27 x 27 = 46656 units responding to 100 images. For those more familiar with convolutions, this corresponds to 64 different convolutional filters, and 27 x 27 units per filter.</p>
+<p>To get the activations of the second layer you can use <code class="docutils literal notranslate"><span class="pre">CNN_acts['conv.1']</span></code>, and so on.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Normalize the images for the deep network</span>
+<span class="n">reshaped_images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">7</span><span class="o">*</span><span class="mi">7</span><span class="o">*</span><span class="mi">40</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">))</span><span class="o">/</span><span class="mf">255.</span>
+<span class="n">reshaped_images</span> <span class="o">=</span> <span class="n">reshaped_images</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">15</span><span class="p">:</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">:</span><span class="o">-</span><span class="mi">15</span><span class="p">]</span>
+
+<span class="n">normalize</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">0.44</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">],</span>
+                                 <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">0.18</span><span class="p">,</span> <span class="mf">0.18</span><span class="p">,</span> <span class="mf">0.18</span><span class="p">])</span>
+
+<span class="n">tensor_images</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">reshaped_images</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+
+<span class="n">tensor_images</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">tensor_images</span><span class="p">)</span>
+
+
+<span class="c1"># Push images through model</span>
+<span class="n">outputs</span><span class="p">,</span> <span class="n">CNN_acts</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">tensor_images</span><span class="p">[:</span><span class="mi">100</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">CNN_acts</span><span class="p">[</span><span class="s1">&#39;conv.0&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1908</span><span class="o">/</span><span class="mf">2356818381.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">reshaped_images</span> <span class="o">=</span> <span class="n">reshaped_images</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">15</span><span class="p">:</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">:</span><span class="o">-</span><span class="mi">15</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">normalize</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">0.44</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">],</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>                                  <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">0.18</span><span class="p">,</span> <span class="mf">0.18</span><span class="p">,</span> <span class="mf">0.18</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+
+<span class="ne">NameError</span>: name &#39;transforms&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll load in the responses for all 1960 images below. It requires some ugly code to avoid running out of memory (and will take a few minutes).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i_image</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1960</span><span class="p">,</span> <span class="mi">196</span><span class="p">):</span>
+  
+  <span class="n">outputs</span><span class="p">,</span> <span class="n">these_CNN_acts</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">tensor_images</span><span class="p">[</span><span class="n">i_image</span><span class="p">:</span><span class="n">i_image</span> <span class="o">+</span> <span class="mi">196</span><span class="p">])</span>
+
+  <span class="k">if</span> <span class="n">i_image</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">CNN_acts</span> <span class="o">=</span> <span class="n">these_CNN_acts</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">CNN_acts</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+      <span class="n">CNN_acts</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">CNN_acts</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+  <span class="k">else</span><span class="p">:</span>
+     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">CNN_acts</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+         <span class="n">CNN_acts</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">CNN_acts</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">these_CNN_acts</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()),</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1908</span><span class="o">/</span><span class="mf">4214187808.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">for</span> <span class="n">i_image</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1960</span><span class="p">,</span> <span class="mi">196</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="ne">----&gt; </span><span class="mi">3</span>   <span class="n">outputs</span><span class="p">,</span> <span class="n">these_CNN_acts</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">tensor_images</span><span class="p">[</span><span class="n">i_image</span><span class="p">:</span><span class="n">i_image</span> <span class="o">+</span> <span class="mi">196</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span>   <span class="k">if</span> <span class="n">i_image</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+
+<span class="ne">NameError</span>: name &#39;model&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">CNN_acts</span><span class="p">[</span><span class="s1">&#39;conv.0&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1908</span><span class="o">/</span><span class="mf">3705006705.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">CNN_acts</span><span class="p">[</span><span class="s1">&#39;conv.0&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;CNN_acts&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<section id="exercise-3-rdms-of-cnn-activations">
+<h3>Exercise 3: RDMs of CNN activations<a class="headerlink" href="#exercise-3-rdms-of-cnn-activations" title="Permalink to this headline">#</a></h3>
+<p>Let’s compute and plot the RDMs of each of our CNN convolutional layers and for Area IT.</p>
+<p>A) <strong>(Optional, advanced, if there’s time)</strong> Compute and visualize the RDM for the 4th layer of the conv net yourself. Then (even more optional), do it for all of the convolutional layers, 0 through 4!</p>
+<p>If you don’t complete A, you can run the solution to answer the following questions:</p>
+<p>B) Which convolutional layer’s representations most resemble those in area IT?</p>
+<p>C) What would you conclude about visual processing in AlexNet vs primate brains? Why?</p>
+<p>Click here for solution</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @markdown Click here for solution</span>
+
+<span class="c1"># Compute RDM for each convolutional layer</span>
+<span class="n">conv_rdms</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">i_layer</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+
+  <span class="n">this_layer_acts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">CNN_acts</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;conv.</span><span class="si">{</span><span class="n">i_layer</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)),</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">7</span><span class="o">*</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+  <span class="n">conv_rdms</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span> <span class="o">=</span> <span class="n">compute_RDM</span><span class="p">(</span><span class="n">this_layer_acts</span><span class="p">)</span>
+
+<span class="c1"># Visualize all RDMS</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">sharey</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i_layer</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+
+    <span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">conv_rdms</span><span class="p">[</span><span class="n">i_layer</span><span class="p">],</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;jet&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i_cat</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+      <span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">i_cat</span><span class="p">,</span> <span class="n">i_cat</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">],</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+      <span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">],</span> <span class="p">[</span><span class="n">i_cat</span><span class="p">,</span> <span class="n">i_cat</span><span class="p">],</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">yticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">],</span> <span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">49</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Conv layer </span><span class="si">{</span><span class="n">i_layer</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">i_layer</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">V4_rdm</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;jet&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i_cat</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+  <span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">i_cat</span><span class="p">,</span> <span class="n">i_cat</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">],</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+  <span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">],</span> <span class="p">[</span><span class="n">i_cat</span><span class="p">,</span> <span class="n">i_cat</span><span class="p">],</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">yticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">],</span> <span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">49</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Area V4&#39;</span><span class="p">);</span>
+
+<span class="n">i_layer</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">IT_rdm</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;jet&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i_cat</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+  <span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">i_cat</span><span class="p">,</span> <span class="n">i_cat</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">],</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+  <span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">],</span> <span class="p">[</span><span class="n">i_cat</span><span class="p">,</span> <span class="n">i_cat</span><span class="p">],</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">yticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">49</span><span class="p">],</span> <span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">49</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Area IT&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1908</span><span class="o">/</span><span class="mf">4222933997.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">for</span> <span class="n">i_layer</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+<span class="ne">----&gt; </span><span class="mi">7</span>   <span class="n">this_layer_acts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">CNN_acts</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;conv.</span><span class="si">{</span><span class="n">i_layer</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)),</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">7</span><span class="o">*</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>   <span class="n">conv_rdms</span><span class="p">[</span><span class="n">i_layer</span><span class="p">]</span> <span class="o">=</span> <span class="n">compute_RDM</span><span class="p">(</span><span class="n">this_layer_acts</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> 
+
+<span class="ne">NameError</span>: name &#39;CNN_acts&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Your answer here</p>
+<p>Click here for B/C solutions</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @markdown Click here for B/C solutions</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">B) The fourth convolutional layer most resembles area IT - it has the most block</span>
+<span class="sd">like structure, especially in the diagonal blocks. I think these two RDMs look </span>
+<span class="sd">pretty similar.</span>
+
+<span class="sd">C) There seems to be a similar representation of information in higher level </span>
+<span class="sd">layers of AlexNet and in higher level areas of the visual system, area IT. This</span>
+<span class="sd">indicates a similarity between the visual information processing in artificial </span>
+<span class="sd">and biological neural networks.</span>
+<span class="sd">&quot;&quot;&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-4-examining-the-convolutional-filters-of-the-first-layer">
+<h3>Exercise 4: Examining the convolutional filters of the first layer<a class="headerlink" href="#exercise-4-examining-the-convolutional-filters-of-the-first-layer" title="Permalink to this headline">#</a></h3>
+<p>In each convolutional layer of AlexNet, we have multiple convolutional filters (64). In the example above, imagine that we have 3 convolutional filters - this would make the convolutional layer size (3 x 2 x 2) instead of (2 x 2). Let’s look at the learned convolutional filters in the first layer of AlexNet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the network weights for the first convolutional layer</span>
+<span class="n">filters</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="c1"># Normalize for plotting</span>
+<span class="n">filters</span> <span class="o">=</span> <span class="n">filters</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">filters</span><span class="p">)</span>
+<span class="n">filters</span> <span class="o">=</span> <span class="n">filters</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">filters</span><span class="p">)</span>
+                           
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1908</span><span class="o">/</span><span class="mf">3042454473.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Get the network weights for the first convolutional layer</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">filters</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Normalize for plotting</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">filters</span> <span class="o">=</span> <span class="n">filters</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">filters</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;model&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Optional, advanced</strong>: Code this visualization yourself! Plot all 64 filters.</p>
+<p>Hint 1: <code class="docutils literal notranslate"><span class="pre">imshow</span></code> expects colored images to be number of pixels by number of pixels by 3. <code class="docutils literal notranslate"><span class="pre">np.swapaxes</span></code> may be helpful</p>
+<p>If you don’t code this yourself, execute the next cell to see the plot</p>
+<p>What types of neurons do you see? Do they resemble any of the receptive fields we’ve discussed (center-surround, simple cells, complex cells)? What do the similarities hint at about biological visual processing vs artifical network visual processing?</p>
+<p>Click here to plot filters</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @markdown Click here to plot filters</span>
+<span class="c1"># Plot the filters</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">sharex</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i_ax</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">64</span><span class="p">):</span>
+  <span class="n">axes</span><span class="p">[</span><span class="n">i_ax</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">swapaxes</span><span class="p">(</span><span class="n">filters</span><span class="p">[</span><span class="n">i_ax</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+  <span class="n">axes</span><span class="p">[</span><span class="n">i_ax</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;Off&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1908</span><span class="o">/</span><span class="mf">759100093.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">for</span> <span class="n">i_ax</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">64</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">6</span>   <span class="n">axes</span><span class="p">[</span><span class="n">i_ax</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">swapaxes</span><span class="p">(</span><span class="n">filters</span><span class="p">[</span><span class="n">i_ax</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>   <span class="n">axes</span><span class="p">[</span><span class="n">i_ax</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;Off&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;filters&#39; is not defined
+</pre></div>
+</div>
+<img alt="../_images/DeepNetworksandVision_40_1.png" src="../_images/DeepNetworksandVision_40_1.png" />
+</div>
+</div>
+</section>
+<section id="optional-very-advanced-exercise-5-predicting-neural-responses">
+<h3>(Optional, very advanced) Exercise 5) Predicting neural responses<a class="headerlink" href="#optional-very-advanced-exercise-5-predicting-neural-responses" title="Permalink to this headline">#</a></h3>
+<p>Try predicting the neural responses from the convolutional activations using linear regression. Which layer best predicts the IT responses? The V4 responses?</p>
+<p>Hint: Use PLS_regression from sklearn. This is similar to linear regression but will work slightly better with limited data.</p>
+<p>Hint 2: Separate train vs test images in a smart way. Instead of completely randomly, use 90% of the 40 configurations for each category and object for training data.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "QMBC-Python/QMBC-Python.github.io",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="DNAParsing.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">DNA Parsing</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Ella Batty<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
