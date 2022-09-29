@@ -1,0 +1,1251 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Bootstrapping &amp; Permutation Tests &#8212; Computational Bootcamp</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Deep Neural Networks and Vision" href="DeepNetworksandVision.html" />
+    <link rel="prev" title="Bootstrapping &amp; Permutation Tests" href="BootstrapandPermutation.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Computational Bootcamp</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Variables.html">
+   Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MathOperators.html">
+   Math Operators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="IntrotoArrays.html">
+   Intro to Arrays
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ArrayComputations.html">
+   Array Computations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Indexing.html">
+   Indexing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CreatingReshaping.html">
+   Creating &amp; Reshaping Arrays
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Plotting.html">
+   Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Day1_InClass.html">
+   In-class activities
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="TuningCurvesTutorial.html">
+   Visualizing Neural Responses &amp; Building Tuning Curves
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ComparisonLogicalOperators.html">
+   Comparison &amp; Logical Operators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="IfStatements.html">
+   If statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ForLoops.html">
+   For Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Day3_InClass_Activities.html">
+   Day 3 In-class activities
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Day3_InClass_Activities_Solutions.html">
+   Day 3 In-class activities Solutions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="LinearDecodingModels.html">
+   Linear Decoding Models
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="UsingFunctions.html">
+   Using Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="WritingFunctions.html">
+   Writing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Objects.html">
+   Objects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FunctionsPractice.html">
+   Functions Practice
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DNAParsing.html">
+   DNA Parsing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DNAParsing_Solutions.html">
+   DNA Parsing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 4
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="BootstrapandPermutation.html">
+   Bootstrapping &amp; Permutation Tests
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Bootstrapping &amp; Permutation Tests
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DeepNetworksandVision.html">
+   Deep Neural Networks and Vision
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/QMBC-Python/QMBC-Python.github.io/blob/main/content/BootstrapandPermutation_Solutions.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/content/BootstrapandPermutation_Solutions.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Bootstrapping &amp; Permutation Tests
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-1-bootstrapping">
+   Section 1: Bootstrapping
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-1-1-bootstrapping-to-determine-confidence-in-mean-firing-rate">
+     Section 1.1: Bootstrapping to determine confidence in mean firing rate
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-1-compute-mean-cell-size">
+       Exercise 1: Compute mean cell size
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-2-resample-data-with-replacement">
+       Exercise 2: Resample data with replacement
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-3-bootstrap-estimates">
+       Exercise 3: Bootstrap estimates
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-4-compute-95-confidence-interval">
+       Exercise 4: Compute 95% confidence interval
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-1-2-bootstrapping-to-determine-confidence-in-linear-regression-parameter">
+     Section 1.2: Bootstrapping to determine confidence in linear regression parameter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-2-permutation-test">
+   Section 2: Permutation test
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-5-how-many-cells-do-we-have">
+     Exercise 5: How many cells do we have?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-6-difference-in-cell-body-size">
+     Exercise 6: Difference in cell body size
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-7-implement-permutation-test">
+     Exercise 7: Implement permutation test
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-8-compute-p-value">
+     Exercise 8: Compute p-value
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-9-2-tailed-test">
+     Exercise 9: 2-tailed test
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Bootstrapping & Permutation Tests</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Bootstrapping &amp; Permutation Tests
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-1-bootstrapping">
+   Section 1: Bootstrapping
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-1-1-bootstrapping-to-determine-confidence-in-mean-firing-rate">
+     Section 1.1: Bootstrapping to determine confidence in mean firing rate
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-1-compute-mean-cell-size">
+       Exercise 1: Compute mean cell size
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-2-resample-data-with-replacement">
+       Exercise 2: Resample data with replacement
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-3-bootstrap-estimates">
+       Exercise 3: Bootstrap estimates
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-4-compute-95-confidence-interval">
+       Exercise 4: Compute 95% confidence interval
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-1-2-bootstrapping-to-determine-confidence-in-linear-regression-parameter">
+     Section 1.2: Bootstrapping to determine confidence in linear regression parameter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-2-permutation-test">
+   Section 2: Permutation test
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-5-how-many-cells-do-we-have">
+     Exercise 5: How many cells do we have?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-6-difference-in-cell-body-size">
+     Exercise 6: Difference in cell body size
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-7-implement-permutation-test">
+     Exercise 7: Implement permutation test
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-8-compute-p-value">
+     Exercise 8: Compute p-value
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-9-2-tailed-test">
+     Exercise 9: 2-tailed test
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/ebatty/ComputationalBootcamp/blob/master/content/BootstrapandPermutation_Solutions.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="bootstrapping-permutation-tests">
+<h1>Bootstrapping &amp; Permutation Tests<a class="headerlink" href="#bootstrapping-permutation-tests" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plotting Functions</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @markdown Plotting Functions</span>
+
+<span class="k">def</span> <span class="nf">plot_original_and_resample</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x_</span><span class="p">,</span> <span class="n">y_</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Plot the original sample and the resampled points from this sample.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x (ndarray): An array of shape (samples,) that contains the input values.</span>
+<span class="sd">    y (ndarray): An array of shape (samples,) that contains the corresponding</span>
+<span class="sd">      measurement values to the inputs.</span>
+<span class="sd">    x_ (ndarray): An array of shape (samples,) with a subset of input values from x</span>
+<span class="sd">    y_ (ndarray): An array of shape (samples,) with a the corresponding subset</span>
+<span class="sd">      of measurement values as x_ from y</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+  <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+  <span class="n">ax1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Original&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+  <span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_</span><span class="p">,</span> <span class="n">y_</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+
+  <span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Resampled&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span>
+          <span class="n">xlim</span><span class="o">=</span><span class="n">ax1</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">(),</span> <span class="n">ylim</span><span class="o">=</span><span class="n">ax1</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">());</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="section-1-bootstrapping">
+<h1>Section 1: Bootstrapping<a class="headerlink" href="#section-1-bootstrapping" title="Permalink to this headline">#</a></h1>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">Bootstrapping</a> is a widely applicable method to assess confidence/uncertainty about estimated descriptive
+statistics or parameters, it was originally <a class="reference external" href="https://projecteuclid.org/euclid.aos/1176344552">proposed</a> by <a class="reference external" href="https://en.wikipedia.org/wiki/Bradley_Efron">Bradley Efron</a>.</p>
+<p>The idea is to generate many new synthetic datasets from the initial true dataset by randomly sampling from it, then finding the statistics/estimators for each one of these new datasets, and finally looking at the distribution of all these statistics/estimators to quantify our confidence.</p>
+<p>Let’s say we have data from randomly sampled neurons. For each neuron, we have the average firing rate of the neuron and the size of the neuron. Please note this is completely faked data for illustration purposes so units etc don’t make sense.</p>
+<p>Execute this cell to simulate some data</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@markdown Execute this cell to simulate some data</span>
+
+<span class="c1"># setting a fixed seed to our random number generator ensures we will always</span>
+<span class="c1"># get the same psuedorandom number sequence</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+
+<span class="c1"># Let&#39;s set some parameters</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="mf">1.2</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">15</span>
+
+<span class="c1"># Draw x and then calculate y</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>  <span class="c1"># sample from a uniform distribution over [0,10)</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>  <span class="c1"># sample from a standard normal distribution</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">theta</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">noise</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># produces a scatter plot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Cell size&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Firing rate&#39;</span><span class="p">);</span>
+
+<span class="n">cell_sizes</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">firing_rates</span> <span class="o">=</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/BootstrapandPermutation_Solutions_8_0.png" src="../_images/BootstrapandPermutation_Solutions_8_0.png" />
+</div>
+</div>
+<p>You have a <code class="docutils literal notranslate"><span class="pre">cell_sizes</span></code> variable and a <code class="docutils literal notranslate"><span class="pre">firing_rates</span></code> variable. Each is an array of length N, where N is the number of data points (cells) we have info about.</p>
+<section id="section-1-1-bootstrapping-to-determine-confidence-in-mean-firing-rate">
+<h2>Section 1.1: Bootstrapping to determine confidence in mean firing rate<a class="headerlink" href="#section-1-1-bootstrapping-to-determine-confidence-in-mean-firing-rate" title="Permalink to this headline">#</a></h2>
+<section id="exercise-1-compute-mean-cell-size">
+<h3>Exercise 1: Compute mean cell size<a class="headerlink" href="#exercise-1-compute-mean-cell-size" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cell_sizes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.791300958941231
+</pre></div>
+</div>
+</div>
+</div>
+<p>How confident are you that that is the mean cell size of this whole population of neurons?</p>
+<p>We can quantify uncertainty using bootstrapping!</p>
+</section>
+<section id="exercise-2-resample-data-with-replacement">
+<h3>Exercise 2: Resample data with replacement<a class="headerlink" href="#exercise-2-resample-data-with-replacement" title="Permalink to this headline">#</a></h3>
+<p>First, we need a method to resample from our cell size dataset with replacement. Complete the code below to  resample a dataset with replacement.</p>
+<p><strong>Hint:</strong> The <a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.choice.html">numpy.random.choice</a> method would be useful here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Resample dataset</span>
+
+<span class="c1"># Get array of indices for resampled points</span>
+<span class="n">sample_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">cell_sizes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">size</span> <span class="o">=</span> <span class="n">cell_sizes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Sample from cell_sizes according to sample_idx</span>
+<span class="n">cell_size_</span> <span class="o">=</span> <span class="n">cell_sizes</span><span class="p">[</span><span class="n">sample_idx</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have a way to resample the data, we can use that in the full bootstrapping process.</p>
+</section>
+<section id="exercise-3-bootstrap-estimates">
+<h3>Exercise 3: Bootstrap estimates<a class="headerlink" href="#exercise-3-bootstrap-estimates" title="Permalink to this headline">#</a></h3>
+<p>We want to resample from our cell sizes dataset 2000 times, compute the mean each time, and store each mean in a variable called <code class="docutils literal notranslate"><span class="pre">bootstrapped_means</span></code>.</p>
+<p>With your group, write out pseudocode for how to do this, then implement it. You should use what you came up with in Exercise 2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
+<span class="n">n_bootstraps</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">bootstrapped_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_bootstraps</span><span class="p">,)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_bootstraps</span><span class="p">):</span>
+  <span class="n">sample_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">cell_sizes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">size</span> <span class="o">=</span> <span class="n">cell_sizes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+  <span class="c1"># Sample from cell_sizes according to sample_idx</span>
+  <span class="n">cell_size_</span> <span class="o">=</span> <span class="n">cell_sizes</span><span class="p">[</span><span class="n">sample_idx</span><span class="p">]</span>
+
+  <span class="n">bootstrapped_means</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">cell_size_</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bootstrapped_means</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 29., 109., 344., 483., 501., 338., 151.,  41.,   3.,   1.]),
+ array([2.4679177 , 3.03186822, 3.59581874, 4.15976925, 4.72371977,
+        5.28767029, 5.85162081, 6.41557132, 6.97952184, 7.54347236,
+        8.10742287]),
+ &lt;BarContainer object of 10 artists&gt;)
+</pre></div>
+</div>
+<img alt="../_images/BootstrapandPermutation_Solutions_18_1.png" src="../_images/BootstrapandPermutation_Solutions_18_1.png" />
+</div>
+</div>
+<p>The histogram of the bootstrapped means gives you a sense of the uncertainty in the cell size mean you computed from the original dataset. Let’s quantify that uncertainty. We do so by computing <a class="reference external" href="https://en.wikipedia.org/wiki/Confidence_interval">confidence intervals</a> (CIs) from our bootstrapped estimates. The confidence interval is the probability that the mean will fall between a set of values for a certain proportion of time.</p>
+<p>The most direct approach to compute confidence intervals is to compute percentiles from the empirical distribution of bootstrapped estimates. Note that this is widely applicable as we are not assuming that this empirical distribution is Gaussian.</p>
+<p>If we aim to compute the 95% confidence interval, we want to figure out what value is the 2.5 percentile and what value is the 97.5 percentile. These two values are the edges of our 95% confidence interval.</p>
+</section>
+<section id="exercise-4-compute-95-confidence-interval">
+<h3>Exercise 4: Compute 95% confidence interval<a class="headerlink" href="#exercise-4-compute-95-confidence-interval" title="Permalink to this headline">#</a></h3>
+<p>Compute the 95% confidence interval. <code class="docutils literal notranslate"><span class="pre">np.percentile</span></code> should help - take a look at the documentation to know how to use it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">bootstrapped_means</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">bootstrapped_means</span><span class="p">,</span> <span class="mf">97.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.1891286469552207
+6.365614897090727
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="section-1-2-bootstrapping-to-determine-confidence-in-linear-regression-parameter">
+<h2>Section 1.2: Bootstrapping to determine confidence in linear regression parameter<a class="headerlink" href="#section-1-2-bootstrapping-to-determine-confidence-in-linear-regression-parameter" title="Permalink to this headline">#</a></h2>
+<p><strong>This section is more advanced, please come back to it after finishing the rest of the tutorial.</strong> This section is based on and uses material from NMA Comp Neuro W1D2 (https://compneuro.neuromatch.io/tutorials/W1D2_ModelFitting/student/W1D2_Tutorial3.html)</p>
+<p>Let’s say we want to fit a linear regression model to predict firing rate based on cell size. We then want to get a sense of the uncertainty of our fitted parameter.</p>
+<p>Implement a method to resample a dataset with replacement, similar to exercise 2 but for both cell size and firing rate data. The method accepts 𝐱 and 𝐲 arrays. It should return a new set of 𝐱′ and 𝐲′ arrays that are created by randomly sampling from the originals.</p>
+<p>We will then compare the original dataset to a resampled dataset.</p>
+<p>Hint: The numpy.random.choice method would be useful here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">resample_with_replacement</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Resample data points with replacement from the dataset of `x` inputs and</span>
+<span class="sd">  `y` measurements.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x (ndarray): An array of shape (samples,) that contains the input values.</span>
+<span class="sd">    y (ndarray): An array of shape (samples,) that contains the corresponding</span>
+<span class="sd">      measurement values to the inputs.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    ndarray, ndarray: The newly resampled `x` and `y` data points.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1">#######################################################</span>
+  <span class="c1">## TODO for students: resample dataset with replacement</span>
+  <span class="c1"># Fill out function and remove</span>
+  <span class="c1"># raise NotImplementedError(&quot;Student exercise: resample dataset with replacement&quot;)</span>
+  <span class="c1">#######################################################</span>
+
+  <span class="c1"># Get array of indices for resampled points</span>
+  <span class="n">sample_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+  <span class="c1"># Sample from x and y according to sample_idx</span>
+  <span class="n">x_</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">sample_idx</span><span class="p">]</span>
+  <span class="n">y_</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">sample_idx</span><span class="p">]</span>
+
+  <span class="k">return</span> <span class="n">x_</span><span class="p">,</span> <span class="n">y_</span>
+
+<span class="n">cell_sizes_</span><span class="p">,</span> <span class="n">firing_rates_</span> <span class="o">=</span> <span class="n">resample_with_replacement</span><span class="p">(</span><span class="n">cell_sizes</span><span class="p">,</span> <span class="n">firing_rates</span><span class="p">)</span>
+
+<span class="n">plot_original_and_resample</span><span class="p">(</span><span class="n">cell_sizes</span><span class="p">,</span> <span class="n">firing_rates</span><span class="p">,</span> <span class="n">cell_sizes_</span><span class="p">,</span> <span class="n">firing_rates_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/BootstrapandPermutation_Solutions_24_0.png" src="../_images/BootstrapandPermutation_Solutions_24_0.png" />
+</div>
+</div>
+<p>In this exercise you will implement a method to run the bootstrap process of generating a set of 𝜃̂  values from a dataset of inputs (𝐱) and measurements (𝐲). You should use resample_with_replacement here, and you may also invoke the helper function solve_normal_eqn to produce the MSE-based estimator.</p>
+<p>We will then use this function to look at the theta_hat from different samples.</p>
+<p>Execute this cell for helper function solve_normal_eqn</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">solve_normal_eqn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Solve the normal equations to produce the value of theta_hat that minimizes</span>
+<span class="sd">    MSE.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">    x (ndarray): An array of shape (samples,) that contains the input values.</span>
+<span class="sd">    y (ndarray): An array of shape (samples,) that contains the corresponding</span>
+<span class="sd">      measurement values to the inputs.</span>
+<span class="sd">    thata_hat (float): An estimate of the slope parameter.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    float: the value for theta_hat arrived from minimizing MSE</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">theta_hat</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">x</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">theta_hat</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bootstrap_estimates</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2000</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Generate a set of theta_hat estimates using the bootstrap method.</span>
+<span class="sd">  Args:</span>
+<span class="sd">    x (ndarray): An array of shape (samples,) that contains the input values.</span>
+<span class="sd">    y (ndarray): An array of shape (samples,) that contains the corresponding</span>
+<span class="sd">      measurement values to the inputs.</span>
+<span class="sd">    n (int): The number of estimates to compute</span>
+<span class="sd">  Returns:</span>
+<span class="sd">    ndarray: An array of estimated parameters with size (n,)</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">theta_hats</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+  <span class="c1"># Loop over number of estimates</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+
+    <span class="c1"># Resample x and y</span>
+    <span class="n">x_</span><span class="p">,</span> <span class="n">y_</span> <span class="o">=</span> <span class="n">resample_with_replacement</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="c1"># Compute theta_hat for this sample</span>
+    <span class="n">theta_hats</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">solve_normal_eqn</span><span class="p">(</span><span class="n">x_</span><span class="p">,</span> <span class="n">y_</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">theta_hats</span>
+
+<span class="c1"># Set random seed</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+
+<span class="c1"># Get bootstrap estimates</span>
+<span class="n">theta_hats</span> <span class="o">=</span> <span class="n">bootstrap_estimates</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">theta_hats</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.27550888 1.17317819 1.18198819 1.25329255 1.20714664]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have our bootstrap estimates, we can visualize all the potential models (models computed with different resampling) together to see how distributed they are.</p>
+<p>Execute this cell to visualize all potential models</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@markdown Execute this cell to visualize all potential models</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># For each theta_hat, plot model</span>
+<span class="n">theta_hats</span> <span class="o">=</span> <span class="n">bootstrap_estimates</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">theta_hat</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">theta_hats</span><span class="p">):</span>
+  <span class="n">y_hat</span> <span class="o">=</span> <span class="n">theta_hat</span> <span class="o">*</span> <span class="n">x</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_hat</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Resampled Fits&#39;</span> <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot observed data</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Observed&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot true fit data</span>
+<span class="n">y_true</span> <span class="o">=</span> <span class="n">theta</span> <span class="o">*</span> <span class="n">x</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;True Model&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+  <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Bootstrapped Slope Estimation&#39;</span><span class="p">,</span>
+  <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span>
+  <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;y&#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># Change legend line alpha property</span>
+<span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="n">handles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/BootstrapandPermutation_Solutions_30_0.png" src="../_images/BootstrapandPermutation_Solutions_30_0.png" />
+</div>
+</div>
+<p>This looks pretty good! The bootstrapped estimates spread around the true model, as we would have hoped. Note that here we have the luxury to know the ground truth value for 𝜃, but in applications we are trying to guess it from data. Therefore, assessing the quality of estimates based on finite data is a task of fundamental importance in data analysis</p>
+<p>Execute this cell to plot bootstrapped CI</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@markdown Execute this cell to plot bootstrapped CI</span>
+
+<span class="n">theta_hats</span> <span class="o">=</span> <span class="n">bootstrap_estimates</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mean = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">theta_hats</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, std = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">theta_hats</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">theta_hats</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;True $\theta$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">theta_hats</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Median&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">theta_hats</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;95% CI&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">theta_hats</span><span class="p">,</span> <span class="mf">97.5</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Bootstrapped Confidence Interval&#39;</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat{{\theta}}$&#39;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">,</span>
+    <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean = 1.24, std = 0.05
+</pre></div>
+</div>
+<img alt="../_images/BootstrapandPermutation_Solutions_33_1.png" src="../_images/BootstrapandPermutation_Solutions_33_1.png" />
+</div>
+</div>
+<p>Looking at the distribution of bootstrapped 𝜃̂  values, we see that the true 𝜃 falls well within the 95% confidence interval, which is reassuring.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="section-2-permutation-test">
+<h1>Section 2: Permutation test<a class="headerlink" href="#section-2-permutation-test" title="Permalink to this headline">#</a></h1>
+<p>This is exercise is based on one created by Rick Born for the Quantitative Methods Bootcamp at Harvard.</p>
+<p>Our data consists of measurements of the sizes of cell bodies of two populations of neurons, which we’ll refer to as “feedback” (FB) neurons or “feedforward” (FF) neurons.</p>
+<p>We want to determine if the cell bodies of FB cells are significantly bigger than those of FF cells.</p>
+<p>We will use a permutation test to determine this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s1">&#39;./cell_body_area.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># Cell sizes for FB cells are in the first column;</span>
+<span class="c1"># FF cells are in the 2nd column:</span>
+<span class="n">fb_cells</span> <span class="o">=</span> <span class="n">my_data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ff_cells</span> <span class="o">=</span> <span class="n">my_data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1778</span><span class="o">/</span><span class="mf">2825419370.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">my_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s1">&#39;./cell_body_area.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">my_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Cell sizes for FB cells are in the first column;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># FF cells are in the 2nd column:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.14/x64/lib/python3.7/site-packages/numpy/lib/npyio.py</span> in <span class="ni">genfromtxt</span><span class="nt">(fname, dtype, comments, delimiter, skip_header, skip_footer, converters, missing_values, filling_values, usecols, names, excludelist, deletechars, replace_space, autostrip, case_sensitive, defaultfmt, unpack, usemask, loose, invalid_raise, max_rows, encoding, like)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1791</span>             <span class="n">fname</span> <span class="o">=</span> <span class="n">os_fspath</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1792</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1793</span>             <span class="n">fid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">_datasource</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1794</span>             <span class="n">fid_ctx</span> <span class="o">=</span> <span class="n">contextlib</span><span class="o">.</span><span class="n">closing</span><span class="p">(</span><span class="n">fid</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1795</span>         <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.14/x64/lib/python3.7/site-packages/numpy/lib/_datasource.py</span> in <span class="ni">open</span><span class="nt">(path, mode, destpath, encoding, newline)</span>
+<span class="g g-Whitespace">    </span><span class="mi">191</span> 
+<span class="g g-Whitespace">    </span><span class="mi">192</span>     <span class="n">ds</span> <span class="o">=</span> <span class="n">DataSource</span><span class="p">(</span><span class="n">destpath</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">193</span>     <span class="k">return</span> <span class="n">ds</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="n">newline</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">194</span> 
+<span class="g g-Whitespace">    </span><span class="mi">195</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.14/x64/lib/python3.7/site-packages/numpy/lib/_datasource.py</span> in <span class="ni">open</span><span class="nt">(self, path, mode, encoding, newline)</span>
+<span class="g g-Whitespace">    </span><span class="mi">531</span>                                       <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="n">newline</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">532</span>         <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">533</span>             <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> not found.&quot;</span> <span class="o">%</span> <span class="n">path</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">534</span> 
+<span class="g g-Whitespace">    </span><span class="mi">535</span> 
+
+<span class="ne">OSError</span>: ./cell_body_area.csv not found.
+</pre></div>
+</div>
+</div>
+</div>
+<section id="exercise-5-how-many-cells-do-we-have">
+<h2>Exercise 5: How many cells do we have?<a class="headerlink" href="#exercise-5-how-many-cells-do-we-have" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the # of cells</span>
+<span class="n">n_fb_cells</span> <span class="o">=</span> <span class="n">fb_cells</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">n_ff_cells</span> <span class="o">=</span> <span class="n">ff_cells</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">n_total</span> <span class="o">=</span> <span class="n">n_fb_cells</span> <span class="o">+</span> <span class="n">n_ff_cells</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n_total</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1778</span><span class="o">/</span><span class="mf">2399658056.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Calculate the # of cells</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">n_fb_cells</span> <span class="o">=</span> <span class="n">fb_cells</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">n_ff_cells</span> <span class="o">=</span> <span class="n">ff_cells</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">n_total</span> <span class="o">=</span> <span class="n">n_fb_cells</span> <span class="o">+</span> <span class="n">n_ff_cells</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">n_total</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;fb_cells&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-6-difference-in-cell-body-size">
+<h2>Exercise 6: Difference in cell body size<a class="headerlink" href="#exercise-6-difference-in-cell-body-size" title="Permalink to this headline">#</a></h2>
+<p>Compute the experimentally obtained value for the difference in mean cell body size. Note the sign of the difference matters because we are specifically testing if FB cells are larger than FF cells.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">real_size_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fb_cells</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ff_cells</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">real_size_diff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1778</span><span class="o">/</span><span class="mf">1859489090.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">real_size_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fb_cells</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ff_cells</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">real_size_diff</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;fb_cells&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-7-implement-permutation-test">
+<h2>Exercise 7: Implement permutation test<a class="headerlink" href="#exercise-7-implement-permutation-test" title="Permalink to this headline">#</a></h2>
+<p>We want to look at 10000 permutations of the data . For each permutaiton, we want to shuffle which cell type each data point belongs to, split the data into fake FB and FF populations,  and computing the difference. Store the difference in <code class="docutils literal notranslate"><span class="pre">all_mean_diffs</span></code>, which should be a 10000 length array.</p>
+<p>Work with your group to write pseudocode and then implement this permutation test.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_permutations</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="c1"># place to store the results</span>
+<span class="n">all_mean_diffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_permutations</span><span class="p">,)</span>
+
+<span class="c1"># First key step: pool all the data</span>
+<span class="n">pooled_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">fb_cells</span><span class="p">,</span> <span class="n">ff_cells</span><span class="p">),</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+<span class="c1"># print(pooled_data.shape)</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_permutations</span><span class="p">):</span>
+    <span class="n">shuffled_data</span> <span class="o">=</span> <span class="n">pooled_data</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">n_total</span><span class="p">),]</span>
+    <span class="n">fb_cell_star</span> <span class="o">=</span> <span class="n">shuffled_data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n_fb_cells</span><span class="p">,]</span>
+    <span class="n">ff_cell_star</span> <span class="o">=</span> <span class="n">shuffled_data</span><span class="p">[</span><span class="n">n_fb_cells</span><span class="p">:,]</span>
+
+    <span class="n">all_mean_diffs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fb_cell_star</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ff_cell_star</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1778</span><span class="o">/</span><span class="mf">1837842984.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># First key step: pool all the data</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">pooled_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">fb_cells</span><span class="p">,</span> <span class="n">ff_cells</span><span class="p">),</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># print(pooled_data.shape)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> 
+
+<span class="ne">NameError</span>: name &#39;fb_cells&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot histogram</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">all_mean_diffs</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span> <span class="o">=</span> <span class="s1">&#39;Difference in means&#39;</span><span class="p">,</span> 
+       <span class="n">ylabel</span> <span class="o">=</span> <span class="s1">&#39;#&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/BootstrapandPermutation_Solutions_43_0.png" src="../_images/BootstrapandPermutation_Solutions_43_0.png" />
+</div>
+</div>
+</section>
+<section id="exercise-8-compute-p-value">
+<h2>Exercise 8: Compute p-value<a class="headerlink" href="#exercise-8-compute-p-value" title="Permalink to this headline">#</a></h2>
+<p>The p-value is the proportion of samples that have a <code class="docutils literal notranslate"><span class="pre">test</span> <span class="pre">statistic</span></code> larger than that of our observed data. In this situation, the test statistic is the mean difference between FB and FF cell bodies.</p>
+<p>Compute this p-value</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_perm_onesided</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">all_mean_diffs</span> <span class="o">&gt;=</span> <span class="n">real_size_diff</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_permutations</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p_perm_onesided</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1778</span><span class="o">/</span><span class="mf">3464090137.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">p_perm_onesided</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">all_mean_diffs</span> <span class="o">&gt;=</span> <span class="n">real_size_diff</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_permutations</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">p_perm_onesided</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;real_size_diff&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Would you conclude that FB cells have significantly bigger cell bodies than FF cells?4</p>
+<p>Yes, the p-value (probability of the null distribution) is quite low</p>
+</section>
+<section id="exercise-9-2-tailed-test">
+<h2>Exercise 9: 2-tailed test<a class="headerlink" href="#exercise-9-2-tailed-test" title="Permalink to this headline">#</a></h2>
+<p>Now suppose we wanted a 2-tailed version of this test. That is, we’re interested in any difference more extreme than the one we got, regardless of whether FB are larger than FF or vice versa. Compute the p value assuming this new 2-tailed test (hint: you do not have to redo the permutation simulation part)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_perm_twosided</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">all_mean_diffs</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">real_size_diff</span><span class="p">))</span> <span class="o">/</span> <span class="n">n_permutations</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p_perm_twosided</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1778</span><span class="o">/</span><span class="mf">603273011.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">p_perm_twosided</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">all_mean_diffs</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">real_size_diff</span><span class="p">))</span> <span class="o">/</span> <span class="n">n_permutations</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">p_perm_twosided</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;real_size_diff&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "QMBC-Python/QMBC-Python.github.io",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="BootstrapandPermutation.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Bootstrapping &amp; Permutation Tests</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="DeepNetworksandVision.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Deep Neural Networks and Vision</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Ella Batty<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
