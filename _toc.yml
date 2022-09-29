@@ -31,5 +31,5 @@ parts:
   - caption: Week 4
     chapters:
     - file: content/BootstrapandPermutation.ipynb
-    - file: content/BoostrapandPermutation_Solutions.ipynb
+    - file: content/BootstrapandPermutation_Solutions.ipynb
     - file: content/DeepNetworksandVision.ipynb
